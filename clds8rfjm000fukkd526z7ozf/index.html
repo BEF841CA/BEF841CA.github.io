@@ -1,0 +1,251 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  Kubernetes Dashboard |    青骓.</title>
+  <meta name="description" content="青骓牧场.">
+  <!-- 标签页图标 -->
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 字体 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+  <!-- 样式库 -->
+  <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.3/dist/paper.min.css"/>
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          青骓.
+        </a>
+
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        青骓.
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+    <div class="body-inner">
+        
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">Kubernetes Dashboard</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">3月 22 2022</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space"></div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h2 id="选择合适版本"><a href="#选择合适版本" class="headerlink" title="选择合适版本"></a>选择合适版本</h2><p><em>根据Kubernetes版本选择对应版本 可去<a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard/releases">github releases页面</a>查看</em></p>
+<h3 id="查看Kubernetes版本"><a href="#查看Kubernetes版本" class="headerlink" title="查看Kubernetes版本"></a>查看Kubernetes版本</h3><pre><code>kubectl version
+</code></pre>
+<h2 id="构建-Pod"><a href="#构建-Pod" class="headerlink" title="构建 Pod"></a>构建 Pod</h2><p>具体命令可以查看 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard/releases">github releases页面</a> Installation</p>
+<h2 id="查看-Pod-状态"><a href="#查看-Pod-状态" class="headerlink" title="查看 Pod 状态"></a>查看 Pod 状态</h2><pre><code>kubectl get pods --all-namespaces | grep dashboard
+</code></pre>
+<h2 id="重新创建-dashboard-服务"><a href="#重新创建-dashboard-服务" class="headerlink" title="重新创建 dashboard 服务"></a>重新创建 dashboard 服务</h2><p><em>删除现有的 dashboard 服务，dashboard 服务的 namespace 是 kubernetes-dashboard，但是该服务的类型是ClusterIP，不便于我们通过浏览器访问，因此需要改成 NodePort 类型的</em></p>
+<h3 id="查看类型"><a href="#查看类型" class="headerlink" title="查看类型"></a>查看类型</h3><pre><code>kubectl get svc --all-namespaces
+</code></pre>
+<h3 id="删除-dashboard-服务"><a href="#删除-dashboard-服务" class="headerlink" title="删除 dashboard 服务"></a>删除 dashboard 服务</h3><pre><code>kubectl delete service kubernetes-dashboard --namespace=kubernetes-dashboard
+</code></pre>
+<h3 id="创建配置文件dashboard-svc-yaml"><a href="#创建配置文件dashboard-svc-yaml" class="headerlink" title="创建配置文件dashboard-svc.yaml"></a>创建配置文件dashboard-svc.yaml</h3><pre><code>cat &gt; dashboard-svc.yaml &lt;&lt;-EOF
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    k8s-app: kubernetes-dashboard
+  name: kubernetes-dashboard
+  namespace: kubernetes-dashboard
+spec:
+  type: NodePort
+  ports:
+    - port: 443
+      targetPort: 8443
+  selector:
+    k8s-app: kubernetes-dashboard
+EOF
+</code></pre>
+<h3 id="创建服务"><a href="#创建服务" class="headerlink" title="创建服务"></a>创建服务</h3><pre><code>kubectl apply -f dashboard-svc.yaml
+</code></pre>
+<h2 id="创建管理员角色"><a href="#创建管理员角色" class="headerlink" title="创建管理员角色"></a>创建管理员角色</h2><h3 id="创建配置文件dashboard-svc-account-yaml"><a href="#创建配置文件dashboard-svc-account-yaml" class="headerlink" title="创建配置文件dashboard-svc-account.yaml"></a>创建配置文件dashboard-svc-account.yaml</h3><pre><code>cat &gt; dashboard-svc-account.yaml &lt;&lt;-EOF
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: dashboard-admin
+  namespace: kube-system
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: dashboard-admin
+subjects:
+  - kind: ServiceAccount
+    name: dashboard-admin
+    namespace: kube-system
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+EOF
+</code></pre>
+<h3 id="创建角色"><a href="#创建角色" class="headerlink" title="创建角色"></a>创建角色</h3><pre><code>kubectl apply -f dashboard-svc-account.yaml 
+</code></pre>
+<h3 id="获取token"><a href="#获取token" class="headerlink" title="获取token"></a>获取token</h3><pre><code># 查看账号
+kubectl get secret -n kube-system |grep admin|awk &#39;&#123;print $1&#125;&#39;
+# 获取token
+kubectl describe secret dashboard-admin-token-xxxxx(上面获取的账号) -n kube-system|grep &#39;^token&#39;|awk &#39;&#123;print $2&#125;&#39;
+</code></pre>
+<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><h3 id="查看访问端口"><a href="#查看访问端口" class="headerlink" title="查看访问端口"></a>查看访问端口</h3><pre><code>kubectl get svc --all-namespaces | grep dashboard
+</code></pre>
+
+        <!-- 分类文章 -->
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%89%88%E6%9C%AC"><span class="space-toc-text">选择合适版本</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%9E%84%E5%BB%BA-Pod"><span class="space-toc-text">构建 Pod</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%9F%A5%E7%9C%8B-Pod-%E7%8A%B6%E6%80%81"><span class="space-toc-text">查看 Pod 状态</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%87%8D%E6%96%B0%E5%88%9B%E5%BB%BA-dashboard-%E6%9C%8D%E5%8A%A1"><span class="space-toc-text">重新创建 dashboard 服务</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%88%9B%E5%BB%BA%E7%AE%A1%E7%90%86%E5%91%98%E8%A7%92%E8%89%B2"><span class="space-toc-text">创建管理员角色</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%99%BB%E5%BD%95"><span class="space-toc-text">登录</span></a></li></ol>
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+    </div>
+</div>
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+    <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>Power by <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a> Theme by <a target="_blank" rel="noopener" href="https://github.com/FuShaoLei/hexo-theme-white">White</a></p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/BEF841CA" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:li.guzhilan@gmail.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/js/clipboard_use.js"></script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  Kubernetes Install |    青骓.</title>
+  <meta name="description" content="青骓牧场.">
+  <!-- 标签页图标 -->
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 字体 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+  <!-- 样式库 -->
+  <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.3/dist/paper.min.css"/>
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          青骓.
+        </a>
+
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        青骓.
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+    <div class="body-inner">
+        
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">Kubernetes install</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">3月 22 2022</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space"></div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h2 id="部署方式介绍"><a href="#部署方式介绍" class="headerlink" title="部署方式介绍"></a>部署方式介绍</h2><p>kubeadm是官方社区推出的一个用于快速部署kubernetes集群的工具，这个工具能通过两条指令完成一个Kubernetes集群的部署：</p>
+<ol>
+<li>创建一个Master节点 <code>kubeadm init</code></li>
+<li>将Node节点加入到当前集群中 <code>kubeadm join &lt;Master 节点的IP和端口&gt;</code></li>
+</ol>
+<h2 id="环境初始化"><a href="#环境初始化" class="headerlink" title="环境初始化"></a>环境初始化</h2><h3 id="关闭swap交换分区"><a href="#关闭swap交换分区" class="headerlink" title="关闭swap交换分区"></a>关闭swap交换分区</h3><p><em>防止Docker安装容器时安装到swap分区</em></p>
+<p>临时关闭</p>
+<pre><code>swapoff -a
+</code></pre>
+<p>永久关闭</p>
+<pre><code>vim /etc/fstab
+# 注释掉最后一行的swap
+</code></pre>
+<h3 id="开启ip转发"><a href="#开启ip转发" class="headerlink" title="开启ip转发"></a>开启ip转发</h3><pre><code>vim /etc/sysctl.conf
+# 开启net.ipv4.ip_forward 
+net.ipv4.ip_forward=1
+</code></pre>
+<p>查看状态</p>
+<pre><code>sysctl -p
+</code></pre>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><h3 id="使用官方安装脚本自动安装"><a href="#使用官方安装脚本自动安装" class="headerlink" title="使用官方安装脚本自动安装"></a>使用官方安装脚本自动安装</h3><pre><code>curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+</code></pre>
+<h3 id="修改Dockers驱动"><a href="#修改Dockers驱动" class="headerlink" title="修改Dockers驱动"></a>修改Dockers驱动</h3><p><em>避免和kubelet和docker的驱动程序不一致 导致kubelet启动失败</em></p>
+<pre><code>vim /etc/docker/daemon.json
+# 添加配置
+&#123;
+ &quot;exec-opts&quot;:[&quot;native.cgroupdriver=systemd&quot;]
+&#125;
+</code></pre>
+<p>重启Docker</p>
+<pre><code>systemctl restart docker
+</code></pre>
+<h2 id="安装k8s"><a href="#安装k8s" class="headerlink" title="安装k8s"></a>安装k8s</h2><h3 id="添加阿里云证书"><a href="#添加阿里云证书" class="headerlink" title="添加阿里云证书"></a>添加阿里云证书</h3><pre><code>curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - 
+</code></pre>
+<h3 id="添加阿里云apt源"><a href="#添加阿里云apt源" class="headerlink" title="添加阿里云apt源"></a>添加阿里云apt源</h3><pre><code>cat &lt;&lt; EOF &gt;/etc/apt/sources.list.d/kubernetes.list
+deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main
+EOF  
+</code></pre>
+<h3 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h3><pre><code>apt update
+</code></pre>
+<h3 id="查看可kubelet安装版本"><a href="#查看可kubelet安装版本" class="headerlink" title="查看可kubelet安装版本"></a>查看可kubelet安装版本</h3><pre><code>apt-cache madison kubelet
+</code></pre>
+<h3 id="安装kubelet"><a href="#安装kubelet" class="headerlink" title="安装kubelet"></a>安装kubelet</h3><pre><code># 安装最新版本
+apt install -y kubelet kubeadm kubectl
+# 安装制定版本
+apt install -y kubelet=1.18.4-00 kubeadm=1.18.4-00 kubectl=1.18.4-00
+</code></pre>
+<h3 id="启动kubelet"><a href="#启动kubelet" class="headerlink" title="启动kubelet"></a>启动kubelet</h3><pre><code>systemctl start kubelet
+# 设置开机自启
+systemctl enable kubelet 
+# 查看状态
+systemctl status kubelet 
+</code></pre>
+<h3 id="查看安装所需镜像"><a href="#查看安装所需镜像" class="headerlink" title="查看安装所需镜像"></a>查看安装所需镜像</h3><pre><code>kubeadm config images list
+# 指定版本号
+kubeadm config images list --kubernetes-version=v1.18.4
+</code></pre>
+<h3 id="从阿里云下载镜像"><a href="#从阿里云下载镜像" class="headerlink" title="从阿里云下载镜像"></a>从阿里云下载镜像</h3><p><em>kubeadm 默认镜像源地址为Google源 科学上网请忽略</em></p>
+<pre><code>docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.18.4
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.18.4
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.18.4
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.18.4
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.2
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.4.3-0
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.6.7
+</code></pre>
+<h3 id="为镜像重新打tag"><a href="#为镜像重新打tag" class="headerlink" title="为镜像重新打tag"></a>为镜像重新打tag</h3><p><em>科学上网请忽略</em></p>
+<pre><code>docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.18.4 k8s.gcr.io/kube-apiserver:v1.18.4
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.18.4 k8s.gcr.io/kube-controller-manager:v1.18.4
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.18.4 k8s.gcr.io/kube-scheduler:v1.18.4
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.18.4 k8s.gcr.io/kube-proxy:v1.18.4
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.2 k8s.gcr.io/pause:3.2
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.4.3-0 k8s.gcr.io/etcd:3.4.3-0
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.6.7 k8s.gcr.io/coredns:1.6.7
+</code></pre>
+<h3 id="初始化master节点"><a href="#初始化master节点" class="headerlink" title="初始化master节点"></a>初始化master节点</h3><pre><code>kubeadm init --kubernetes-version=v1.18.4 --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=Swap
+# kubernetes-version kubernetes版本号 跟安装的kubeadm保持一致
+# pod-network-cidr pod网段 
+# ignore-preflight-errors 忽略运行的错误
+# 其他选项可以通过kubeadm init --help查看
+</code></pre>
+<h3 id="重置master"><a href="#重置master" class="headerlink" title="重置master"></a>重置master</h3><pre><code>kubeadm reset
+</code></pre>
+<h3 id="添加网络组件"><a href="#添加网络组件" class="headerlink" title="添加网络组件"></a>添加网络组件</h3><pre><code>kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+# gituhb 代理
+kubectl apply -f https://cdn.jsdelivr.net/gh/coreos/flannel@master/Documentation/kube-flannel.yml
+</code></pre>
+<h3 id="检查状态"><a href="#检查状态" class="headerlink" title="检查状态"></a>检查状态</h3><pre><code>kubectl get pods -n kube-system -l app=flannel
+# 集群状态
+kubectl get componentstatus
+# 检查节点是否准备完成
+kubectl get nodes
+</code></pre>
+<h2 id="node-节点加入-master主机"><a href="#node-节点加入-master主机" class="headerlink" title="node 节点加入 master主机"></a>node 节点加入 master主机</h2><h3 id="重新生成token"><a href="#重新生成token" class="headerlink" title="重新生成token"></a>重新生成token</h3><pre><code>//master主机上重新生成token
+kubeadm token generate
+#根据token输出添加命令
+kubeadm token create xxxx(上面输出的token) --print-join-command --ttl=0   
+</code></pre>
+
+        <!-- 分类文章 -->
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F%E4%BB%8B%E7%BB%8D"><span class="space-toc-text">部署方式介绍</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E7%8E%AF%E5%A2%83%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="space-toc-text">环境初始化</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%AE%89%E8%A3%85Docker"><span class="space-toc-text">安装Docker</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%AE%89%E8%A3%85k8s"><span class="space-toc-text">安装k8s</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#node-%E8%8A%82%E7%82%B9%E5%8A%A0%E5%85%A5-master%E4%B8%BB%E6%9C%BA"><span class="space-toc-text">node 节点加入 master主机</span></a></li></ol>
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+    </div>
+</div>
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+    <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>Power by <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a> Theme by <a target="_blank" rel="noopener" href="https://github.com/FuShaoLei/hexo-theme-white">White</a></p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/BEF841CA" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:li.guzhilan@gmail.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/js/clipboard_use.js"></script>
+</body>
+</html>

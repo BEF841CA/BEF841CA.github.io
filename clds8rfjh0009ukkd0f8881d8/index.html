@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  Redis Command |    青骓.</title>
+  <meta name="description" content="青骓牧场.">
+  <!-- 标签页图标 -->
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 字体 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
+  <!-- 样式库 -->
+  <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.3/dist/paper.min.css"/>
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- 代码高亮 -->
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/github.css">
+
+    
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          青骓.
+        </a>
+
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        青骓.
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+    <div class="body-inner">
+        
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">Redis Command</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">8月 13 2021</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space"></div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <p>启动 redis 客户端</p>
+<pre><code class="Bash">redis-cli -h host -p port -a password
+</code></pre>
+<h2 id="Redis中key的操作命令"><a href="#Redis中key的操作命令" class="headerlink" title="Redis中key的操作命令"></a>Redis中key的操作命令</h2><p>查看当前数据库中有哪些key</p>
+<pre><code class="Bash">keys *
+</code></pre>
+<p>查看key的剩余生存时间，以秒为单位，返回-1为永不过期，-2为不存在</p>
+<pre><code class="Bash">ttl key
+</code></pre>
+<p>判断key是否存在：存在返回1，不存在返回0，多个key返回存在的数量</p>
+<pre><code class="Bash">exists key1 key2
+</code></pre>
+<p>设置key的生存时间，超过时间key自动删除，单位是秒，成功返回1，失败为0</p>
+<pre><code class="Bash">expire key seconds
+</code></pre>
+<p>清空当前</p>
+<pre><code class="Bash">flushdb
+</code></pre>
+<p>清空所有库</p>
+<pre><code class="Bash">flushall
+</code></pre>
+<p>获取redis的所有配置项</p>
+<pre><code class="Bash">config get *
+</code></pre>
+<p>给key改名字，当key和newkey相同，或者newkey不存在时返回一个错误</p>
+<pre><code class="Bash">rename key newkey
+</code></pre>
+<p>查看key所存储值的数据类型</p>
+<pre><code class="Bash">type key
+</code></pre>
+<h2 id="字符串类型：String"><a href="#字符串类型：String" class="headerlink" title="字符串类型：String"></a>字符串类型：String</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>redis中最基本的数据结构，能存储任何类型的数据，甚至是图片，最大512M</li>
+</ul>
+<ul>
+<li>字符串类型的数据操作总的思想是通过key操作value，key是数据标识，value是我们感兴趣的业务数据</li>
+</ul>
+<h3 id="常用操作命令"><a href="#常用操作命令" class="headerlink" title="常用操作命令"></a>常用操作命令</h3><p>将字符串值 value 设置到 key 中，如果key已存在，后放的值会把前放的值覆盖掉</p>
+<pre><code class="Bash">set key value
+</code></pre>
+<p>获取 key 中设置的字符串值,key存在，返回key对应的value；key不存在，返回null</p>
+<pre><code class="Bash">get key
+</code></pre>
+<h2 id="列表：List"><a href="#列表：List" class="headerlink" title="列表：List"></a>列表：List</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>Redis列表是简单的字符串列表，按照插入顺序排序，左边（头部）、右边（尾部）或者中间都可以添加元素。底层是个链表结构，链表的操作无论是头或者尾效率都极高，但是如果对中间元素进行操作，那效率会大大降低了。</li>
+</ul>
+<ul>
+<li>列表类型的数据操作总的思想是通过key和下标操作value，key是数据标识，下标是数据在列表中的位置，value是我们感兴趣的业务数据</li>
+</ul>
+<h3 id="常用操作命令-1"><a href="#常用操作命令-1" class="headerlink" title="常用操作命令"></a>常用操作命令</h3><p>将一个或多个值 value 插入到列表 key 的最左边（表头），各个value值依次插入到表头位置。返回值：插入之后的列表的长度</p>
+<pre><code class="Bash">lpush key value1 value2[value...]
+</code></pre>
+<p>将一个或多个值 value 插入到列表 key 的最右边（表尾），各个 value 值按依次插入到表尾。返回值：插入之后的列表的长度</p>
+<pre><code class="Bash">lpush key value1 value2[value...]
+</code></pre>
+<p>获取列表 key 中指定下标区间内的元素，下标从0开始，到列表长度-1；下标也可以是负数，表示列表从后往前取，-1表示倒数第一个元素，-2表示倒数第二个元素，以此类推；startIndex和endIndex超出范围不会报错。<br>返回值：获取到的元素列表</p>
+<pre><code class="Bash">lrange key startIndex endIndex
+</code></pre>
+<h2 id="集合类型：Set"><a href="#集合类型：Set" class="headerlink" title="集合类型：Set"></a>集合类型：Set</h2><h3 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>Redis的Set是string类型的无序不重复集合</li>
+</ul>
+<ul>
+<li>集合类型的数据操作总的思想是通过key确定集合，key是集合标识，元素没有下标，只有直接操作业务数据和数据的个数</li>
+</ul>
+<h3 id="常用操作命令-2"><a href="#常用操作命令-2" class="headerlink" title="常用操作命令"></a>常用操作命令</h3><h2 id="哈希类型：Hash"><a href="#哈希类型：Hash" class="headerlink" title="哈希类型：Hash"></a>哈希类型：Hash</h2><h3 id="简介-3"><a href="#简介-3" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>Redis的hash 是一个string类型的key和value的映射表，这里的value是一系列的键值对，hash特别适合用于存储对象</li>
+</ul>
+<ul>
+<li>哈希类型的数据操作总的思想是通过key和field操作value，key是数据标识，field是域，value是我们感 兴趣的业务数据</li>
+</ul>
+<h3 id="常用操作命令-3"><a href="#常用操作命令-3" class="headerlink" title="常用操作命令"></a>常用操作命令</h3><h2 id="有序集合：Zset"><a href="#有序集合：Zset" class="headerlink" title="有序集合：Zset"></a>有序集合：Zset</h2><h3 id="简介-4"><a href="#简介-4" class="headerlink" title="简介"></a>简介</h3><ul>
+<li>Redis 有序集合zset和集合set一样也是string类型元素的集合，且不允许重复的成员</li>
+</ul>
+<ul>
+<li>不同的是zset的每个元素都会关联一个分数（分数可以重复），redis通过分数来为集合中的成员进行从小到大的排序。</li>
+</ul>
+<h3 id="常用操作命令-4"><a href="#常用操作命令-4" class="headerlink" title="常用操作命令"></a>常用操作命令</h3>
+        <!-- 分类文章 -->
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            <ol class="space-toc"><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#Redis%E4%B8%ADkey%E7%9A%84%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="space-toc-text">Redis中key的操作命令</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%EF%BC%9AString"><span class="space-toc-text">字符串类型：String</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%88%97%E8%A1%A8%EF%BC%9AList"><span class="space-toc-text">列表：List</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E9%9B%86%E5%90%88%E7%B1%BB%E5%9E%8B%EF%BC%9ASet"><span class="space-toc-text">集合类型：Set</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E5%93%88%E5%B8%8C%E7%B1%BB%E5%9E%8B%EF%BC%9AHash"><span class="space-toc-text">哈希类型：Hash</span></a></li><li class="space-toc-item space-toc-level-2"><a class="space-toc-link" href="#%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88%EF%BC%9AZset"><span class="space-toc-text">有序集合：Zset</span></a></li></ol>
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+    </div>
+</div>
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+    <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>Power by <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a> Theme by <a target="_blank" rel="noopener" href="https://github.com/FuShaoLei/hexo-theme-white">White</a></p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/BEF841CA" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:li.guzhilan@gmail.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+    
+      
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/js/clipboard_use.js"></script>
+</body>
+</html>
