@@ -1,0 +1,8 @@
+.filing a {
+  text-decoration: none;
+  color: color-primary-text;
+}
+.filing a:hover {
+  color: color-link-hover-text;
+  cursor: pointer;
+}
