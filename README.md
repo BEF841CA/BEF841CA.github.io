@@ -16,12 +16,12 @@
 
 ```
 .
-├── _config.yml         网站的 配置 信息。
+├── _config.yml         网站的配置信息。
 ├── package.json        应用程序的信息。
-├── scaffolds           模版 文件夹。
+├── scaffolds           模版文件夹。
 ├── source              资源文件夹。
 |   ├── _drafts
 |   └── _posts
-└── themes              主题 文件夹。
+└── themes              主题文件夹。
 ```
 
