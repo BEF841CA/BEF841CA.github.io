@@ -9,6 +9,7 @@
   <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">
     <img alt="node" src="https://img.shields.io/badge/node-%3E=12.13.0-green.svg?style=flat-square&logo=Node.js&longCache=true">
   </a>
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/BEF841CA/BEF841CA.github.io">
 </div>
 <br/>
 <h2 align="center" style="font-family:楷体,serif;">少年的梦发烫 晒过月与太阳 随风自生自长 有朝乘长风破万里浪</h2>
