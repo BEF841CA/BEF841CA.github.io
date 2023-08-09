@@ -1,7 +1,7 @@
 # Header
 favicon: favicon.ico
 menu:
-  Home: /
-  Archives: /archives
+    Home: /
+    Archives: /archives
 # Footer
-filing: "[鲁ICP备2021013019号-1](https://beian.miit.gov.cn/)"
+filing: '[鲁ICP备2021013019号-1](https://beian.miit.gov.cn/)'
