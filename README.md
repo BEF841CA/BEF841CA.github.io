@@ -4,12 +4,12 @@
     <img alt="releases" src="https://img.shields.io/badge/releases-v2.0.0-blue.svg?style=flat-square&longCache=true">
   </a>
   <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">
-    <img alt="hexo" src="https://img.shields.io/badge/hexo-%3E=6.0.0-blue.svg?style=flat-square&logo=hexo&longCache=true">
+    <img alt="hexo" src="https://img.shields.io/badge/hexo-%3E=6.0.0-blue.svg?logo=hexo&style=flat-square&longCache=true">
   </a>
   <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">
-    <img alt="node" src="https://img.shields.io/badge/node-%3E=12.13.0-green.svg?style=flat-square&logo=Node.js&longCache=true">
+    <img alt="node" src="https://img.shields.io/badge/node-%3E=12.13.0-green.svg?logo=Node.js&style=flat-square&longCache=true">
   </a>
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/BEF841CA/BEF841CA.github.io">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/BEF841CA/BEF841CA.github.io?style=flat-square&longCache=true">
 </div>
 <br/>
 <h2 align="center" style="font-family:楷体,serif;">少年的梦发烫 晒过月与太阳 随风自生自长 有朝乘长风破万里浪</h2>
