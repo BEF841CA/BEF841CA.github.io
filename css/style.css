@@ -3,6 +3,10 @@ body {
   padding: 0;
   margin: 0;
   font-family: "LXGW WenKai Screen", sans-serif;
+  font-size: 18px;
+}
+*::-webkit-scrollbar {
+  display: none;
 }
 .flex {
   display: flex;
@@ -13,14 +17,37 @@ body {
 .justify-content-space-between {
   justify-content: space-between;
 }
-.header {
-  padding: 0 20px;
+.align-items-flex-end {
+  align-items: flex-end;
 }
-.filing a {
+.align-items-center {
+  align-items: center;
+}
+.body {
+  width: 100vw;
+}
+.header {
+  height: 5vh;
+  padding: 0 10vw;
+}
+.main {
+  min-height: 90vh;
+}
+.footer {
+  height: 5vh;
+}
+.header > .title {
+  font-size: 26px;
+}
+.filing {
+  padding-bottom: 1vh;
+  font-size: 16px;
+}
+.filing > a {
   text-decoration: none;
   color: #000;
 }
-.filing a:hover {
+.filing > a:hover {
   color: #409eff;
   cursor: pointer;
 }
