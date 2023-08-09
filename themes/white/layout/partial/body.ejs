@@ -1,1 +1,8 @@
-<%- partial('header') %> <%- partial('main') %> <%- partial('footer') %>
+<div class="body">
+    <div class="header flex justify-content-space-between align-items-center"><%- partial('header') %></div>
+    <div class="main"><%- partial('main') %></div>
+    <div class="footer flex justify-content-center align-items-flex-end">
+        <%- partial('footer') %>
+    </div>
+    <%- js('js/script.js') %>
+</div>
