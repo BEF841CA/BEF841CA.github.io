@@ -4,7 +4,7 @@
 
 # Site
 title: 青骓.
-subtitle: ''
+subtitle: '少年的梦发烫 晒过月与太阳 随风自生自长 有朝乘长风破万里浪'
 description: ''
 keywords:
 author: Bruce
@@ -97,7 +97,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: white
+theme: Cyberpunk
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
