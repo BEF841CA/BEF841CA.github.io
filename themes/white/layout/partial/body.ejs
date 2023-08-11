@@ -1,8 +1,12 @@
 <div class="body">
-    <div class="header flex justify-content-space-between align-items-center"><%- partial('header'), {}, {cache: true}) %></div>
-    <div class="main"><%- partial('main') %></div>
+    <div class="header flex justify-content-space-between align-items-center">
+        <%- partial('header', {}, {cache: true}) %>
+    </div>
+    <div class="main">
+        <%- partial('main') %>
+    </div>
     <div class="footer flex justify-content-center align-items-flex-end">
-        <%- partial('footer'), {}, {cache: true}) %>
+        <%- partial('footer', {}, {cache: true}) %>
     </div>
     <%- js('js/script.js') %>
 </div>
