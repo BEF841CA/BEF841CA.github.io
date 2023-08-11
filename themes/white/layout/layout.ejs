@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="<%= config.language %>">
     <head>
-        <%- partial('partial/head') %>
+        <%- partial('partial/head', {}, {cache: true}) %>
     </head>
     <body>
-        <%- partial('partial/body') %>
+        <%- body %>
     </body>
 </html>

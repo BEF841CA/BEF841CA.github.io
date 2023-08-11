@@ -1,4 +1,1 @@
-<% if(is_home()) {%>1<% } %> <% if(is_archive()) {%>2<% } %>
-<div>
-    
-</div>
+<% if(is_home()) {%> <%- partial('main/home') %> <% } %> <% if(is_archive()) {%> <%- partial('main/archive') %> <% } %>
