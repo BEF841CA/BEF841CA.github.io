@@ -2,12 +2,27 @@
   width: 100vw;
 }
 .header {
-  height: 5vh;
+  height: 15vh;
   padding: 0 10vw;
+  background-image: url("/assets/img/dots.png");
 }
 .main {
-  min-height: 90vh;
+  min-height: 80vh;
+  position: relative;
+}
+.main:after {
+  background-image: url("/assets/img/razor.svg");
+  bottom: 0;
+  content: "";
+  height: 48px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+.main > div:last-child {
+  height: 48px;
 }
 .footer {
   height: 5vh;
+  background: color-secondary;
 }
