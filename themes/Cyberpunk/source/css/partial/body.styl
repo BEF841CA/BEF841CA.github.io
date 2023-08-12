@@ -2,25 +2,44 @@
     width 100vw
 
 .header
-    height 15vh
+    height 5vh
     padding 0 1vw
-    background-image: url("/assets/img/dots.png")
+    background: color-secondary
 
 .main
-    min-height: 80vh
+    height: 90vh
     position: relative
 
-.main:after
-    background-image: url("/assets/img/razor.svg")
-    bottom: 0
-    content: ""
-    height: 48px
-    left: 0
-    position: absolute
-    width: 100%
+    &:before
+        background-image: url("/assets/img/razor-top.svg")
+        top: 0
+        content: ""
+        height: 23px;
+        left: 0
+        position: absolute
+        width: 100%
+        transform: rotate(180deg);
 
-.main > div:last-child
-    height: 48px
+    &:after
+        background-image: url("/assets/img/razor-bottom.svg")
+        bottom: 0
+        content: ""
+        height: 48px
+        left: 0
+        position: absolute
+        width: 100%
+
+    & > div:first-child
+        height: 23px
+
+    & > div:nth-child(2)
+        height: calc(90vh - 23px - 48px)
+        overflow-x: hidden
+        overflow-y: scroll
+
+    & > div:last-child
+        height: 48px
+
 
 .footer
     height 5vh
