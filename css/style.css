@@ -118,22 +118,40 @@ body {
   width: 100vw;
 }
 .header {
-  height: 15vh;
+  height: 5vh;
   padding: 0 1vw;
-  background-image: url("/assets/img/dots.png");
+  background: #fcee0a;
 }
 .main {
-  min-height: 80vh;
+  height: 90vh;
   position: relative;
 }
+.main:before {
+  background-image: url("/assets/img/razor-top.svg");
+  top: 0;
+  content: "";
+  height: 23px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  transform: rotate(180deg);
+}
 .main:after {
-  background-image: url("/assets/img/razor.svg");
+  background-image: url("/assets/img/razor-bottom.svg");
   bottom: 0;
   content: "";
   height: 48px;
   left: 0;
   position: absolute;
   width: 100%;
+}
+.main > div:first-child {
+  height: 23px;
+}
+.main > div:nth-child(2) {
+  height: calc(90vh - 23px - 48px);
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .main > div:last-child {
   height: 48px;
@@ -143,68 +161,7 @@ body {
   background: #fcee0a;
 }
 .header .title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-family: Lobster;
-  color: #fcee0a;
-  text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  animation: pulsea 300ms ease infinite alternate;
-}
-@-moz-keyframes pulsea {
-  0% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #faa;
-  }
-  50% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #faa, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  }
-  75% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #faa, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  }
-  100% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  }
-}
-@-webkit-keyframes pulsea {
-  0% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #faa;
-  }
-  50% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #faa, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  }
-  75% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #faa, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  }
-  100% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  }
-}
-@-o-keyframes pulsea {
-  0% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #faa;
-  }
-  50% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #faa, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  }
-  75% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #faa, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  }
-  100% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  }
-}
-@keyframes pulsea {
-  0% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #faa;
-  }
-  50% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #faa, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  }
-  75% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #faa, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  }
-  100% {
-    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
-  }
+  font-size: 0.5rem;
 }
 .header .menu {
   font-size: 0.5rem;
