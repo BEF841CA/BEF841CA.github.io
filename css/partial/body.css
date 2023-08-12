@@ -4,14 +4,13 @@
 .header {
   height: 5vh;
   padding: 0 1vw;
-  background: color-secondary;
+  background: var(--bg-color-secondary);
 }
 .main {
   height: 90vh;
   position: relative;
 }
 .main:before {
-  background-image: url("/assets/img/razor-top.svg");
   top: 0;
   content: "";
   height: 23px;
@@ -21,13 +20,28 @@
   transform: rotate(180deg);
 }
 .main:after {
-  background-image: url("/assets/img/razor-bottom.svg");
   bottom: 0;
   content: "";
   height: 48px;
   left: 0;
   position: absolute;
   width: 100%;
+}
+@media (prefers-color-scheme: light) {
+  .main:before {
+    background-image: none;
+  }
+  .main:after {
+    background-image: none;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .main:before {
+    background-image: url("/assets/img/razor-top.svg");
+  }
+  .main:after {
+    background-image: url("/assets/img/razor-bottom.svg");
+  }
 }
 .main > div:first-child {
   height: 23px;
@@ -42,5 +56,5 @@
 }
 .footer {
   height: 5vh;
-  background: color-secondary;
+  background: var(--bg-color-secondary);
 }

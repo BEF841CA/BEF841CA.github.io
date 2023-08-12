@@ -1,0 +1,20 @@
+:root {
+  --font-size-base: 0.5rem;
+  --font-size-small: 0.3rem;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color-primary: #f3f7fe;
+    --bg-color-secondary: #f3f7fe;
+    --bg-color-dot: #e1ecfc;
+    --link-color-hover: #409eff;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color-primary: #000;
+    --bg-color-secondary: #fcee0a;
+    --bg-color-dot: #ff003c;
+    --link-color-hover: #409eff;
+  }
+}
