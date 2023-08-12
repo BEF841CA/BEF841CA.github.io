@@ -4,14 +4,13 @@
 .header
     height 5vh
     padding 0 1vw
-    background: color-secondary
+    background: var(--bg-color-secondary)
 
 .main
     height: 90vh
     position: relative
 
     &:before
-        background-image: url("/assets/img/razor-top.svg")
         top: 0
         content: ""
         height: 23px;
@@ -21,13 +20,26 @@
         transform: rotate(180deg);
 
     &:after
-        background-image: url("/assets/img/razor-bottom.svg")
         bottom: 0
         content: ""
         height: 48px
         left: 0
         position: absolute
         width: 100%
+
+    @media (prefers-color-scheme: light)
+        &:before
+            background-image: none
+
+        &:after
+            background-image: none
+
+    @media (prefers-color-scheme: dark)
+        &:before
+            background-image: url("/assets/img/razor-top.svg")
+
+        &:after
+            background-image: url("/assets/img/razor-bottom.svg")
 
     & > div:first-child
         height: 23px
@@ -40,7 +52,6 @@
     & > div:last-child
         height: 48px
 
-
 .footer
     height 5vh
-    background: color-secondary
+    background: var(--bg-color-secondary)
