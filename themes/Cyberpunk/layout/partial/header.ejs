@@ -1,5 +1,7 @@
-<div class="title"><%= config.title %></div>
-<div>
+<div class="title">
+    <p> <%= config.title %></p>
+</div>
+<div class="menu">
     <% for (var i in theme.menu){ %>
         <a href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
     <% } %>

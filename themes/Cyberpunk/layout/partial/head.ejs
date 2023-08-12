@@ -1,8 +1,9 @@
 <% var title=page.title; %>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
 <%- meta_generator() %>
 <title><% if (title){ %> <%= title %> | <% } %><%= config.title %></title>
-<%- favicon_tag(theme.favicon) %> <%- css('css/style') %>
+<%- favicon_tag(theme.favicon) %>
+<%- css('css/style') %>
 <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" />
 
