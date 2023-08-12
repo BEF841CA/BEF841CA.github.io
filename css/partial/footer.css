@@ -1,14 +1,14 @@
-.filing {
+.footer .filing {
   padding-bottom: 1vh;
   font-family: "LXGW WenKai Screen";
   font-size: font-size-small;
   color: color-regular;
 }
-.filing > a {
+.footer .filing > a {
   text-decoration: none;
   color: color-regular;
 }
-.filing > a:hover {
+.footer .filing > a:hover {
   color: color-regular;
   cursor: pointer;
 }

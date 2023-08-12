@@ -1,6 +1,67 @@
-.header > .title {
-  font-size: 48px;
+.header .title {
+  font-size: 1.5rem;
   font-weight: bold;
-  font-family: cursive;
-  color: color-primary;
+  font-family: Lobster;
+  color: color-secondary;
+  text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  animation: pulsea 300ms ease infinite alternate;
+}
+@-moz-keyframes pulsea {
+  0% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #faa;
+  }
+  50% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #faa, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  }
+  75% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #faa, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  }
+  100% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  }
+}
+@-webkit-keyframes pulsea {
+  0% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #faa;
+  }
+  50% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #faa, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  }
+  75% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #faa, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  }
+  100% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  }
+}
+@-o-keyframes pulsea {
+  0% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #faa;
+  }
+  50% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #faa, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  }
+  75% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #faa, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  }
+  100% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  }
+}
+@keyframes pulsea {
+  0% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #faa;
+  }
+  50% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #faa, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  }
+  75% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #faa, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  }
+  100% {
+    text-shadow: 0 0 0.3em rgba(255,100,200,0.3), 0.04em 0.04em 0 #112, 0.045em 0.045em 0 #f99, 0.09em 0.09em 0 #112, 0.095em 0.095em 0 #b66, 0.14em 0.14em 0 #112, 0.145em 0.145em 0 #a44;
+  }
+}
+.header .menu {
+  font-size: font-size-base;
 }
