@@ -38,6 +38,40 @@
     
 
     
+    
+        systemctl Command<br/><br/>
+Tue May 25 2021 09:43:32 GMT+0000<br/><br/>
+<p>启动service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start 服务名称.service</span><br></pre></td></tr></table></figure>
+
+<p>停止service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop 服务名称.service</span><br></pre></td></tr></table></figure>
+
+<p>重启service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart 服务名称.service</span><br></pre></td></tr></table></figure>
+
+<p>查看service状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status 服务名称.service</span><br></pre></td></tr></table></figure>
+
+<p>在开机时启用service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> 服务名称.service</span><br></pre></td></tr></table></figure>
+
+<p>在开机时禁用service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> 服务名称.service</span><br></pre></td></tr></table></figure>
+
+<p>查看service是否开机启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl is-enabled 服务名称.service</span><br></pre></td></tr></table></figure>
+
+<p>查看已启动的service列表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files|grep enabled</span><br></pre></td></tr></table></figure>
+
+<p>查看启动失败的service列表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --failed</span><br></pre></td></tr></table></figure>
+
+<p>查看service日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl -f -u 服务名称.service -n 1000</span><br></pre></td></tr></table></figure>
+    
+    
 </div>
 <div></div>
     </div>
