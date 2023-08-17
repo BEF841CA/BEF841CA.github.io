@@ -1,7 +1,7 @@
 <% var last; %>
 <% page.posts.each((post, i) => { %>
     <% var year = post.date.year(); %>
-    <% if (last != year){ %>
+    <% if (last !== year){ %>
       <% last = year; %>
         <div>
           <a href="<%- url_for(config.archive_dir + '/' + year) %>" class="archive-year"><%= year %></a>
