@@ -51,24 +51,23 @@
 <body>
 <script>
     // this function is used to check current theme before page loaded.
-    (() => {
-        const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-        const isDark = currentTheme === 'dark';
-        const pageBody = document.getElementsByTagName('body')[0]
-        const mobileToggleTheme = document.getElementById("mobile-toggle-theme")
-        debugger
-        if (isDark) {
-            pageBody.classList.add('dark-theme');
-            // mobile
-            if (mobileToggleTheme)
-                mobileToggleTheme.innerText = "· Dark"
-        } else {
-            pageBody.classList.remove('dark-theme');
-            // mobile
-            if (mobileToggleTheme)
-                mobileToggleTheme.innerText = "· Light"
-        }
-    })();
+    // (() => {
+    //     const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+    //     const isDark = currentTheme === 'dark';
+    //     const pageBody = document.getElementsByTagName('body')[0]
+    //     const mobileToggleTheme = document.getElementById("mobile-toggle-theme")
+    //     if (isDark) {
+    //         pageBody.classList.add('dark-theme');
+    //         // mobile
+    //         if (mobileToggleTheme)
+    //             mobileToggleTheme.innerText = "· Dark"
+    //     } else {
+    //         pageBody.classList.remove('dark-theme');
+    //         // mobile
+    //         if (mobileToggleTheme)
+    //             mobileToggleTheme.innerText = "· Light"
+    //     }
+    // })();
 </script>
 
 <div class="wrapper">
@@ -211,7 +210,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">October 9, 2021&nbsp;&nbsp;15:46:10</a>
+                        Date: <a href="#">October 9, 2021&nbsp;&nbsp;7:46:10</a>
                         </span>
                     
                     
