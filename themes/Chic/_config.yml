@@ -1,5 +1,5 @@
 # Header
-navname: Bentham's Blog
+navname: 青骓牧场
 
 # navigatior items
 nav:
@@ -12,11 +12,11 @@ nav:
 favicon: /favicon.ico
 
 # Profile
-nickname: Jeremy Bentham
+nickname: Li Haiyang
 
 ### this variable is MarkDown form.
-description: Lorem ipsum dolor sit amet, **consectetur adipiscing elit.** <br>Fusce eget urna vitae velit *eleifend interdum at ac* nisi.
-avatar: /image/avatar.jpeg
+description: 少年的梦发烫 晒过月与太阳. <br>随风自生自长 有朝乘长风破万里浪.
+avatar: /image/avatar.webp
 
 # main menu navigation
 ## links key words should not be changed.
@@ -24,36 +24,14 @@ avatar: /image/avatar.jpeg
 ## Unused key can be commented out.
 links:
   Blog: /archives
-  # Category:
-  # Tags: 
-  # Link:
-  # Resume:
-  # Publish:
-  # Trophy:
-  # Gallery:
-  # RSS:
-  # AliPay:
-  ZhiHu: https://www.zhihu.com/people/sirice
-  # LinkedIn:
-  # FaceBook:
-  # Twitter:
-  # Skype:
-  # CodeSandBox:
-  # CodePen:
-  # Sketch:
-  # Gitlab:
-  # Dribbble:
-  Instagram:
-  Reddit:
-  # YouTube:
-  # QQ:
-  # Weibo:
-  # WeChat:
-  Github: https://github.com/Siricee
+  Github: https://github.com/BEF841CA
+  Mail: mailto:lihaiyang@jxtd1601.cn
 
 # how links show: you have 2 choice--text or icon.
 links_text_enable: false
 links_icon_enable: true
+
+filing: '鲁ICP备2021013019号-1'
 
 # Post page
 ## Post_meta
@@ -62,15 +40,7 @@ post_meta_enable: true
 post_author_enable: true
 post_date_enable: true
 post_category_enable: true
-## Post copyright
-post_copyright_enable: true
 
-post_copyright_author_enable: true
-post_copyright_permalink_enable: true
-post_copyright_license_enable: true
-post_copyright_license_text: Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE
-post_copyright_slogan_enable: true
-post_copyright_slogan_text: Do you believe in <strong>DESTINY</strong>?
 ## toc
 post_toc_enable: true
 
