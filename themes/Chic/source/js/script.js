@@ -34,54 +34,52 @@ document.ready(
     // this script shouldn't be changed.
     () => {
         var _Blog = window._Blog || {};
-        const currentTheme = window.localStorage && window.localStorage.getItem('theme');
-        const isDark = currentTheme === 'dark';
-        const pagebody = document.getElementsByTagName('body')[0]
-        if (isDark) {
+        // debugger
+        // const currentTheme = window.localStorage && window.localStorage.getItem('theme');
+        // const isDark = currentTheme === 'dark';
+        const pageBody = document.getElementsByTagName('body')[0]
+        const mobileToggleTheme = document.getElementById("mobile-toggle-theme");
+        const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const isDarkMode = darkModeMediaQuery.matches;
+
+        if (isDarkMode) {
+            pageBody.classList.add('dark-theme');
             document.getElementById("switch_default").checked = true;
             // mobile
-            document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            mobileToggleTheme.innerText = "· Dark"
         } else {
+            pageBody.classList.remove('dark-theme');
             document.getElementById("switch_default").checked = false;
             // mobile
-            document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            mobileToggleTheme.innerText = "· Light"
         }
-        _Blog.toggleTheme = function () {
-            if (isDark) {
-                pagebody.classList.add('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-            } else {
-                pagebody.classList.remove('dark-theme');
-                // mobile
-                document.getElementById("mobile-toggle-theme").innerText = "· Light"
-            }
-            document.getElementsByClassName('toggleBtn')[0].addEventListener('click', () => {
-                if (pagebody.classList.contains('dark-theme')) {
-                    pagebody.classList.remove('dark-theme');
-                } else {
-                    pagebody.classList.add('dark-theme');
-                }
-                window.localStorage &&
-                window.localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light',)
-            })
-            // moblie
-            document.getElementById('mobile-toggle-theme').addEventListener('click', () => {
-                if (pagebody.classList.contains('dark-theme')) {
-                    pagebody.classList.remove('dark-theme');
-                    // mobile
-                    document.getElementById("mobile-toggle-theme").innerText = "· Light"
 
-                } else {
-                    pagebody.classList.add('dark-theme');
-                    // mobile
-                    document.getElementById("mobile-toggle-theme").innerText = "· Dark"
-                }
-                window.localStorage &&
-                window.localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light',)
-            })
+        const darkModeChangeListener = () => {
+            if (pageBody.classList.contains('dark-theme')) {
+                pageBody.classList.remove('dark-theme');
+                // mobile
+                mobileToggleTheme.innerText = "· Light"
+                setTimeout(() => {
+                    document.getElementById("switch_default").checked = false;
+                })
+            } else {
+                pageBody.classList.add('dark-theme');
+                // mobile
+                mobileToggleTheme.innerText = "· Dark"
+
+                setTimeout(() => {
+                    document.getElementById("switch_default").checked = true;
+                })
+            }
+        };
+
+        _Blog.toggleTheme = function () {
+            document.getElementsByClassName('toggleBtn')[0].addEventListener('click', () => darkModeChangeListener())
+            // // moblie
+            document.getElementById('mobile-toggle-theme').addEventListener('click', () => darkModeChangeListener())
         };
         _Blog.toggleTheme();
+        darkModeMediaQuery.addEventListener("change", ev => darkModeChangeListener());
         // ready function.
     }
 );
