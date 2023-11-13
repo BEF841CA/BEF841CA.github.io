@@ -1,7 +1,8 @@
 ---
-title: Contos Command
+title: Firewalld 配置
 date: 2021-05-19 10:56:13
-tags: 
+tags: [Linux, Firewall]
+category: Deploy
 ---
 
 ## firewall防火墙

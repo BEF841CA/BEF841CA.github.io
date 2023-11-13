@@ -1,7 +1,8 @@
 ---
 title: nvm Command
 date: 2021-04-02 17:23:06
-tags:
+tags: [Node]
+category: Develop
 ---
 
 ### [windows项目地址](https://github.com/coreybutler/nvm-windows)

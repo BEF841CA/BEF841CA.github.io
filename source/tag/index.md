@@ -1,7 +1,4 @@
 ---
-title:
-  '[object Object]': null
-date:
-  '[object Object]': null
+title: Tag
+layout: tag
 ---
-11

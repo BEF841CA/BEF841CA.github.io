@@ -1,7 +1,8 @@
 ---
 title: Redis Command 
-date: 2021-08-13 10:27:09 
-tags:
+date: 2021-08-13 10:27:09
+tags: [Redis]
+category: Deploy
 ---
 
 启动 redis 客户端

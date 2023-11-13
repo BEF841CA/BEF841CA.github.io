@@ -1,7 +1,4 @@
 ---
-title:
-  '[object Object]': null
-date:
-  '[object Object]': null
+title: Category
+layout: category
 ---
-11

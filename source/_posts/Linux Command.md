@@ -1,7 +1,8 @@
 ---
 title: Linux Command
 date: 2021-05-10 11:34:30
-tags: 
+tags: [Linux]
+category: Deploy
 ---
 
 ```Bash

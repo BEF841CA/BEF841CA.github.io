@@ -1,7 +1,8 @@
 ---
 title: Docker Command
 date: 2021-05-11 10:09:53
-tags:
+tags: [Docker]
+category: Docker
 ---
 
 ## docker

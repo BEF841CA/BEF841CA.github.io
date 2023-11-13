@@ -1,7 +1,8 @@
 ---
 title: Windows OpenSSH
 date: 2021-11-17 10:04:09
-tags: 
+tags: [Windows, SSH]
+category: Windows
 ---
 
 ## 官方文档

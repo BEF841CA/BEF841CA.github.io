@@ -1,7 +1,8 @@
 ---
 title: Kubernetes Dashboard 
-date: 2022-03-22 20:52:56 
-tags:
+date: 2022-03-22 20:52:56
+tags: [Kubernetes]
+category: Kubernetes
 ---
 ## 选择合适版本
 

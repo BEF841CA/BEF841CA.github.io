@@ -1,7 +1,8 @@
 ---
 title: 自动部署jar包sh工具
 date: 2021-05-27 14:52:32
-tags: 
+tags: [Linux, JAVA, Shell]
+category: Deploy
 ---
 
 ## 自动部署sh脚本文件

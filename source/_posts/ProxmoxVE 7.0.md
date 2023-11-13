@@ -1,7 +1,8 @@
 ---
-title: ProxmoxVE 7.0
+title: ProxmoxVE Config
 date: 2021-10-09 15:46:10
-tags:
+tags: [Proxmox]
+category: Proxmox
 ---
 ## PVE7.0国内源 ProxmoxVE
 先安装vim编辑器，后面会使用。

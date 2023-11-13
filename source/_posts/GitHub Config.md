@@ -1,7 +1,8 @@
 ---
-title: Github
+title: Github Config
 date: 2023-08-16 17:01:32
-tags: 
+tags: [Github]
+category: Github
 ---
 
 ## 解决被墙问题

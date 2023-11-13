@@ -1,7 +1,8 @@
 ---
 title: Personal Package Archives
 date: 2021-09-02 17:30:52
-tags:
+tags: [Linux, Node]
+category: Deploy
 ---
 
 ## 简介

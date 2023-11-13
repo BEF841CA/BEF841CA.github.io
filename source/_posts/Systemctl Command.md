@@ -1,7 +1,8 @@
 ---
 title: systemctl Command
 date: 2021-05-25 17:43:32
-tags: 
+tags: [Linux]
+category: Develop
 ---
 
 启动service
