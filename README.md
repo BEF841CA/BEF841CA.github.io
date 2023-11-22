@@ -1,13 +1,13 @@
 <h1 align="center">青骓</h1>
 <div align="center">
   <a href="https://gitee.com/BEF841CA/blog" target="_blank" rel="noopener noreferrer">
-    <img alt="releases" src="https://img.shields.io/badge/releases-v2.0.0-blue.svg?style=flat-square&longCache=true">
+    <img alt="releases" src="https://img.shields.io/badge/releases-v2.1.0-blue.svg?style=flat-square&longCache=true">
   </a>
   <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">
-    <img alt="hexo" src="https://img.shields.io/badge/hexo-%3E=6.0.0-blue.svg?logo=hexo&style=flat-square&longCache=true">
+    <img alt="hexo" src="https://img.shields.io/badge/hexo-%3E=7.0.0-blue.svg?logo=hexo&style=flat-square&longCache=true">
   </a>
   <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">
-    <img alt="node" src="https://img.shields.io/badge/node-%3E=12.13.0-green.svg?logo=Node.js&style=flat-square&longCache=true">
+    <img alt="node" src="https://img.shields.io/badge/node-%3E=16.0.0-green.svg?logo=Node.js&style=flat-square&longCache=true">
   </a>
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/BEF841CA/BEF841CA.github.io?style=flat-square&longCache=true">
 </div>
