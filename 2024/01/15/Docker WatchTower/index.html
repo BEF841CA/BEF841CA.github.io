@@ -132,6 +132,71 @@
         <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
 
     
     <article class="post-wrap">
@@ -161,8 +226,15 @@
         </header>
 
         <div class="post-content">
-            <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -e TZ=Asia/Shanghai --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --schedule  &quot;0 0 5 * * *&quot;</span><br></pre></td></tr></table></figure>
+            <h2 id="watchtower"><a href="#watchtower" class="headerlink" title="watchtower"></a><a target="_blank" rel="noopener" href="https://containrrr.dev/watchtower">watchtower</a></h2><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -e TZ=Asia/Shanghai --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --schedule  &quot;0 0 5 * * *&quot;</span><br></pre></td></tr></table></figure>
 
+<h3 id="时区"><a href="#时区" class="headerlink" title="时区"></a>时区</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            Argument: N/A</span><br><span class="line">Environment Variable: TZ</span><br><span class="line">                Type: String</span><br><span class="line">             Default: &quot;UTC&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自动清理"><a href="#自动清理" class="headerlink" title="自动清理"></a>自动清理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            Argument: --cleanup</span><br><span class="line">Environment Variable: WATCHTOWER_CLEANUP</span><br><span class="line">                Type: Boolean</span><br><span class="line">             Default: false</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除匿名卷"><a href="#删除匿名卷" class="headerlink" title="删除匿名卷"></a>删除匿名卷</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            Argument: --cleanup</span><br><span class="line">Environment Variable: WATCHTOWER_CLEANUP</span><br><span class="line">                Type: Boolean</span><br><span class="line">             Default: false</span><br></pre></td></tr></table></figure>
+
+<h3 id="轮询间隔"><a href="#轮询间隔" class="headerlink" title="轮询间隔"></a>轮询间隔</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            Argument: --interval, -i</span><br><span class="line">Environment Variable: WATCHTOWER_POLL_INTERVAL</span><br><span class="line">                Type: Integer</span><br><span class="line">             Default: 86400 (24 hours)</span><br></pre></td></tr></table></figure>
         </div>
 
         <section class="post-tags">
