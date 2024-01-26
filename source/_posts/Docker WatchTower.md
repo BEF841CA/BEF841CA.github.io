@@ -5,7 +5,9 @@ tags: [Docker]
 category: Docker
 ---
 
-## [watchtower](https://containrrr.dev/watchtower)
+# [watchtower](https://containrrr.dev/watchtower)
+
+## 配置
 
 ### 示例
 ```
@@ -43,3 +45,48 @@ Environment Variable: WATCHTOWER_POLL_INTERVAL
                 Type: Integer
              Default: 86400 (24 hours)
 ```
+
+## 通知
+
+### 通知日志级别
+```
+            Argument: --notifications-level
+Environment Variable: WATCHTOWER_NOTIFICATIONS_LEVEL
+                Type: String
+             Default: info (panic, fatal, error, warn, info, debug, trace)
+```
+### 主机名
+```
+            Argument: --notifications-hostname
+Environment Variable: WATCHTOWER_NOTIFICATIONS_HOSTNAME
+                Type: String
+```
+### 标题前缀
+```
+            Argument: --notification-title-tag
+Environment Variable: WATCHTOWER_NOTIFICATION_TITLE_TAG
+                Type: String
+```
+### 通知url
+使用[shoutrrr](https://containrrr.dev/shoutrrr/)发送通知
+```
+            Argument: --notification-url
+Environment Variable: WATCHTOWER_NOTIFICATION_URL
+                Type: String
+                E.g.: smtp://username:password@host:port/?from=fromAddress&to=recipient1[,recipient2,...]
+```
+* Username - SMTP server username   
+  Default: empty   
+  URL part: smtp://username:password@host:port/
+* Password - SMTP server password or hash (for OAuth2)   
+  Default: empty   
+  URL part: smtp://username:password@host:port/
+* Host - SMTP server hostname or IP address (Required)   
+  URL part: smtp://username:password@host:port/
+* Port - SMTP server port, common ones are 25, 465, 587 or 2525   
+  Default:    
+  URL part: 25smtp://username:password@host:port/
+* FromAddress - E-mail address that the mail are sent from (Required)   
+  Aliases: from
+* ToAddresses - List of recipient e-mails separated by "," (comma) (Required)   
+  Aliases: to
