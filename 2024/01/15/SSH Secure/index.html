@@ -15,7 +15,7 @@
 
 
 
-<title>自动更新 Docker 容器 | 青骓.</title>
+<title>SSH 安全 | 青骓.</title>
 
 
 
@@ -201,7 +201,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">自动更新 Docker 容器</h1>
+            <h1 class="post-title">SSH 安全</h1>
             
                 <div class="post-meta">
                     
@@ -214,40 +214,25 @@
                         </span>
                     
                     
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/Docker/">Docker</a>
-                            
-                        </span>
-                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            <h1 id="watchtower"><a href="#watchtower" class="headerlink" title="watchtower"></a><a target="_blank" rel="noopener" href="https://containrrr.dev/watchtower">watchtower</a></h1><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -e TZ=Asia/Shanghai --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --schedule  &quot;0 0 5 * * *&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="时区"><a href="#时区" class="headerlink" title="时区"></a>时区</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            Argument: N/A</span><br><span class="line">Environment Variable: TZ</span><br><span class="line">                Type: String</span><br><span class="line">             Default: &quot;UTC&quot;</span><br></pre></td></tr></table></figure>
+            <h1 id="登录信息"><a href="#登录信息" class="headerlink" title="登录信息"></a>登录信息</h1><h2 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h2><p>查看登录日志</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/auth.log</span><br></pre></td></tr></table></figure>
 
-<h3 id="自动清理"><a href="#自动清理" class="headerlink" title="自动清理"></a>自动清理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            Argument: --cleanup</span><br><span class="line">Environment Variable: WATCHTOWER_CLEANUP</span><br><span class="line">                Type: Boolean</span><br><span class="line">             Default: false</span><br></pre></td></tr></table></figure>
+<p>查看尝试登录IP和尝试登录的用户名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/auth.log | grep &#x27;Invalid&#x27; | awk &#x27;&#123;print $10 &quot;\t&quot; $8&#125;&#x27; | sort</span><br></pre></td></tr></table></figure>
 
-<h3 id="删除匿名卷"><a href="#删除匿名卷" class="headerlink" title="删除匿名卷"></a>删除匿名卷</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            Argument: --cleanup</span><br><span class="line">Environment Variable: WATCHTOWER_CLEANUP</span><br><span class="line">                Type: Boolean</span><br><span class="line">             Default: false</span><br></pre></td></tr></table></figure>
+<p>查看尝试登录用户名次数统计</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/auth.log | grep &#x27;Invalid&#x27; | awk &#x27;&#123;print $8&#125;&#x27; | sort | uniq -c | sort -bn</span><br></pre></td></tr></table></figure>
 
-<h3 id="轮询间隔"><a href="#轮询间隔" class="headerlink" title="轮询间隔"></a>轮询间隔</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            Argument: --interval, -i</span><br><span class="line">Environment Variable: WATCHTOWER_POLL_INTERVAL</span><br><span class="line">                Type: Integer</span><br><span class="line">             Default: 86400 (24 hours)</span><br></pre></td></tr></table></figure>
+<h2 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h2><p>显示登录失败的用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lastb</span><br></pre></td></tr></table></figure>
 
-<h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><h3 id="通知日志级别"><a href="#通知日志级别" class="headerlink" title="通知日志级别"></a>通知日志级别</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            Argument: --notifications-level</span><br><span class="line">Environment Variable: WATCHTOWER_NOTIFICATIONS_LEVEL</span><br><span class="line">                Type: String</span><br><span class="line">             Default: info (panic, fatal, error, warn, info, debug, trace)</span><br></pre></td></tr></table></figure>
-<h3 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">            Argument: --notifications-hostname</span><br><span class="line">Environment Variable: WATCHTOWER_NOTIFICATIONS_HOSTNAME</span><br><span class="line">                Type: String</span><br></pre></td></tr></table></figure>
-<h3 id="标题前缀"><a href="#标题前缀" class="headerlink" title="标题前缀"></a>标题前缀</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">            Argument: --notification-title-tag</span><br><span class="line">Environment Variable: WATCHTOWER_NOTIFICATION_TITLE_TAG</span><br><span class="line">                Type: String</span><br></pre></td></tr></table></figure>
-<h3 id="通知url"><a href="#通知url" class="headerlink" title="通知url"></a>通知url</h3><p>使用<a target="_blank" rel="noopener" href="https://containrrr.dev/shoutrrr/">shoutrrr</a>发送通知</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">            Argument: --notification-url</span><br><span class="line">Environment Variable: WATCHTOWER_NOTIFICATION_URL</span><br><span class="line">                Type: String</span><br><span class="line">                E.g.: smtp://username:password@host:port/?from=fromAddress&amp;to=recipient1[,recipient2,...]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Username - SMTP server username<br>Default: empty<br>URL part: smtp:&#x2F;&#x2F;username:password@host:port&#x2F;</li>
-<li>Password - SMTP server password or hash (for OAuth2)<br>Default: empty<br>URL part: smtp:&#x2F;&#x2F;username:password@host:port&#x2F;</li>
-<li>Host - SMTP server hostname or IP address (Required)<br>URL part: smtp:&#x2F;&#x2F;username:password@host:port&#x2F;</li>
-<li>Port - SMTP server port, common ones are 25, 465, 587 or 2525<br>Default:<br>URL part: 25smtp:&#x2F;&#x2F;username:password@host:port&#x2F;</li>
-<li>FromAddress - E-mail address that the mail are sent from (Required)<br>Aliases: from</li>
-<li>ToAddresses - List of recipient e-mails separated by “,” (comma) (Required)<br>Aliases: to</li>
-</ul>
+<p>统计登录失败次数命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lastb | awk &#x27;&#123; print $3&#125;&#x27; | sort | uniq -c | sort -n</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -257,7 +242,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/Docker/"># Docker</a>
+                        <a href="/tags/SSH/"># SSH</a>
+                    
+                        <a href="/tags/Liunx/"># Liunx</a>
                     
                         
                 </span>
@@ -270,8 +257,10 @@
         </section>
         <section class="post-nav">
             
+                <a class="prev" rel="prev" href="/2024/01/15/Docker%20WatchTower/">自动更新 Docker 容器</a>
             
-            <a class="next" rel="next" href="/2024/01/15/SSH%20Secure/">SSH 安全</a>
+            
+            <a class="next" rel="next" href="/2023/11/22/Docker%20Create%20Container/">Docker 容器创建</a>
             
         </section>
 
