@@ -7,12 +7,11 @@ category: Docker
 
 # [watchtower](https://containrrr.dev/watchtower)
 
-## 配置
-
-### 示例
+## 示例
 ```
 docker run -d -e TZ=Asia/Shanghai --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --schedule  "0 0 5 * * *"
 ```
+## 配置
 
 ### 时区
 ```
