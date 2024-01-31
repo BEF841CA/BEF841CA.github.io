@@ -3,37 +3,20 @@
 
 <head>
     <%- partial('_partial/head', {cache: true}) %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.25.0/dist/tocbot.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/vs2015.min.css">
 </head>
-
 <body>
-<script>
-    // this function is used to check current theme before page loaded.
-    // (() => {
-    //     const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-    //     const isDark = currentTheme === 'dark';
-    //     const pageBody = document.getElementsByTagName('body')[0]
-    //     const mobileToggleTheme = document.getElementById("mobile-toggle-theme")
-    //     if (isDark) {
-    //         pageBody.classList.add('dark-theme');
-    //         // mobile
-    //         if (mobileToggleTheme)
-    //             mobileToggleTheme.innerText = "· Dark"
-    //     } else {
-    //         pageBody.classList.remove('dark-theme');
-    //         // mobile
-    //         if (mobileToggleTheme)
-    //             mobileToggleTheme.innerText = "· Light"
-    //     }
-    // })();
-</script>
-
-<div class="wrapper">
-    <%- partial('_partial/header', {cache: true}) %>
-    <div class="main">
-        <%- body %>
+    <div class="wrapper">
+        <%- partial('_partial/header', {cache: true}) %>
+        <div class="main">
+            <%- body %>
+        </div>
+        <%- partial('_partial/footer', {cache: true}) %>
     </div>
-    <%- partial('_partial/footer', {cache: true}) %>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4.25.0/dist/tocbot.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>

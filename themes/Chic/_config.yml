@@ -61,7 +61,8 @@ stylesheets:
 # scripts loaded in the end of the body
 scripts:
   - /js/script.js
-  - /js/tocbot.min.js
+#  - 'https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js'
+#  - 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js'
     # tscanlin/tocbot: Build a table of contents from headings in an HTML document.
     # https://github.com/tscanlin/tocbot
 
