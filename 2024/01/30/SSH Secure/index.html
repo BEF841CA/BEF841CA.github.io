@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,15 +7,13 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <meta name="author" content="LiHaiyang">
-
-
-    <meta name="subtitle" content="少年的梦发烫 晒过月与太阳 随风自生自长 有朝乘长风破万里浪">
+    <meta name="author" content="John Doe">
 
 
 
 
-<title>SSH 安全 | 青骓.</title>
+
+<title>SSH 安全 | Hexo</title>
 
 
 
@@ -35,8 +33,6 @@
     
     <script src="/js/script.js"></script>
     
-    <script src="/js/tocbot.min.js"></script>
-    
 
 
 
@@ -45,33 +41,12 @@
         
     
 
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.25.0/dist/tocbot.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/vs2015.min.css">
 <meta name="generator" content="Hexo 7.0.0"></head>
-
 <body>
-<script>
-    // this function is used to check current theme before page loaded.
-    // (() => {
-    //     const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-    //     const isDark = currentTheme === 'dark';
-    //     const pageBody = document.getElementsByTagName('body')[0]
-    //     const mobileToggleTheme = document.getElementById("mobile-toggle-theme")
-    //     if (isDark) {
-    //         pageBody.classList.add('dark-theme');
-    //         // mobile
-    //         if (mobileToggleTheme)
-    //             mobileToggleTheme.innerText = "· Dark"
-    //     } else {
-    //         pageBody.classList.remove('dark-theme');
-    //         // mobile
-    //         if (mobileToggleTheme)
-    //             mobileToggleTheme.innerText = "· Light"
-    //     }
-    // })();
-</script>
-
-<div class="wrapper">
-    <header>
+    <div class="wrapper">
+        <header>
     <nav class="navbar">
         <div class="container">
             <div class="navbar-header header-logo"><a href="/">青骓牧场</a></div>
@@ -128,8 +103,8 @@
         }
     }
 </script>
-    <div class="main">
-        <div class="container">
+        <div class="main">
+            <div class="container">
     
     
         <div class="post-toc">
@@ -205,7 +180,7 @@
             
                 <div class="post-meta">
                     
-                        Author: <a itemprop="author" rel="author" href="/">LiHaiyang</a>
+                        Author: <a itemprop="author" rel="author" href="/">John Doe</a>
                     
 
                     
@@ -220,19 +195,20 @@
 
         <div class="post-content">
             <h1 id="登录信息"><a href="#登录信息" class="headerlink" title="登录信息"></a>登录信息</h1><h2 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h2><p>查看登录日志</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/auth.log</span><br></pre></td></tr></table></figure>
-
+<pre><code>cat /var/log/auth.log
+</code></pre>
 <p>查看尝试登录IP和尝试登录的用户名</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/auth.log | grep &#x27;Invalid&#x27; | awk &#x27;&#123;print $10 &quot;\t&quot; $8&#125;&#x27; | sort</span><br></pre></td></tr></table></figure>
-
+<pre><code>cat /var/log/auth.log | grep &#39;Invalid&#39; | awk &#39;&#123;print $10 &quot;\t&quot; $8&#125;&#39; | sort
+</code></pre>
 <p>查看尝试登录用户名次数统计</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/auth.log | grep &#x27;Invalid&#x27; | awk &#x27;&#123;print $8&#125;&#x27; | sort | uniq -c | sort -bn</span><br></pre></td></tr></table></figure>
-
+<pre><code>cat /var/log/auth.log | grep &#39;Invalid&#39; | awk &#39;&#123;print $8&#125;&#39; | sort | uniq -c | sort -bn
+</code></pre>
 <h2 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h2><p>显示登录失败的用户</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lastb</span><br></pre></td></tr></table></figure>
-
+<pre><code>lastb
+</code></pre>
 <p>统计登录失败次数命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lastb | awk &#x27;&#123; print $3&#125;&#x27; | sort | uniq -c | sort -n</span><br></pre></td></tr></table></figure>
+<pre><code>lastb | awk &#39;&#123; print $3&#125;&#39; | sort | uniq -c | sort -n
+</code></pre>
 
         </div>
 
@@ -266,11 +242,11 @@
     </article>
 </div>
 
-    </div>
-    <footer id="footer" class="footer">
+        </div>
+        <footer id="footer" class="footer">
     <div class="copyright">
         <span>
-            © LiHaiyang | Powered by
+            © John Doe | Powered by
             <a href="https://hexo.io" target="_blank">Hexo</a>
             &
             <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>
@@ -279,8 +255,10 @@
         </span>
     </div>
 </footer>
-
-</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4.25.0/dist/tocbot.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>

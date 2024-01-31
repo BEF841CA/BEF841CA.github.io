@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,15 +7,13 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <meta name="author" content="LiHaiyang">
-
-
-    <meta name="subtitle" content="少年的梦发烫 晒过月与太阳 随风自生自长 有朝乘长风破万里浪">
+    <meta name="author" content="John Doe">
 
 
 
 
-<title>Docker 容器创建 | 青骓.</title>
+
+<title>Docker 容器创建 | Hexo</title>
 
 
 
@@ -35,8 +33,6 @@
     
     <script src="/js/script.js"></script>
     
-    <script src="/js/tocbot.min.js"></script>
-    
 
 
 
@@ -45,33 +41,12 @@
         
     
 
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.25.0/dist/tocbot.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/styles/vs2015.min.css">
 <meta name="generator" content="Hexo 7.0.0"></head>
-
 <body>
-<script>
-    // this function is used to check current theme before page loaded.
-    // (() => {
-    //     const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
-    //     const isDark = currentTheme === 'dark';
-    //     const pageBody = document.getElementsByTagName('body')[0]
-    //     const mobileToggleTheme = document.getElementById("mobile-toggle-theme")
-    //     if (isDark) {
-    //         pageBody.classList.add('dark-theme');
-    //         // mobile
-    //         if (mobileToggleTheme)
-    //             mobileToggleTheme.innerText = "· Dark"
-    //     } else {
-    //         pageBody.classList.remove('dark-theme');
-    //         // mobile
-    //         if (mobileToggleTheme)
-    //             mobileToggleTheme.innerText = "· Light"
-    //     }
-    // })();
-</script>
-
-<div class="wrapper">
-    <header>
+    <div class="wrapper">
+        <header>
     <nav class="navbar">
         <div class="container">
             <div class="navbar-header header-logo"><a href="/">青骓牧场</a></div>
@@ -128,8 +103,8 @@
         }
     }
 </script>
-    <div class="main">
-        <div class="container">
+        <div class="main">
+            <div class="container">
     
     
         <div class="post-toc">
@@ -205,7 +180,7 @@
             
                 <div class="post-meta">
                     
-                        Author: <a itemprop="author" rel="author" href="/">LiHaiyang</a>
+                        Author: <a itemprop="author" rel="author" href="/">John Doe</a>
                     
 
                     
@@ -220,28 +195,40 @@
 
         <div class="post-content">
             <h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>拉取镜像</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure>
-
+<pre><code>docker pull nginx
+</code></pre>
 <p>创建Nginx配置文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p $PWD/nginx/conf</span><br><span class="line">mkdir -p $PWD/nginx/log</span><br><span class="line">mkdir -p $PWD/nginx/html</span><br></pre></td></tr></table></figure>
-
+<pre><code>mkdir -p $PWD/nginx/conf
+mkdir -p $PWD/nginx/log
+mkdir -p $PWD/nginx/html
+</code></pre>
 <p>生成容器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name nginx -d nginx</span><br></pre></td></tr></table></figure>
-
+<pre><code>docker run --name nginx -d nginx
+</code></pre>
 <p>将容器nginx.conf文件复制到宿主机</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp nginx:/etc/nginx/nginx.conf $PWD/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
-
+<pre><code>docker cp nginx:/etc/nginx/nginx.conf $PWD/nginx/conf/nginx.conf
+</code></pre>
 <p>将容器conf.d文件夹下内容复制到宿主机</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp nginx:/etc/nginx/conf.d $PWD/nginx/conf/conf.d</span><br></pre></td></tr></table></figure>
-
+<pre><code>docker cp nginx:/etc/nginx/conf.d $PWD/nginx/conf/conf.d
+</code></pre>
 <p>将容器中的html文件夹复制到宿主机</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp nginx:/usr/share/nginx/html $PWD/nginx/</span><br></pre></td></tr></table></figure>
-
+<pre><code>docker cp nginx:/usr/share/nginx/html $PWD/nginx/
+</code></pre>
 <p>删除容器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker stop nginx</span><br><span class="line">docker rm nginx</span><br></pre></td></tr></table></figure>
-
+<pre><code>docker stop nginx
+docker rm nginx
+</code></pre>
 <p>启动容器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">-p 80:80 \</span><br><span class="line">--name nginx \</span><br><span class="line">-v $PWD/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \</span><br><span class="line">-v $PWD/nginx/conf/conf.d:/etc/nginx/conf.d \</span><br><span class="line">-v $PWD/nginx/log:/var/log/nginx \</span><br><span class="line">-v $PWD/nginx/html:/usr/share/nginx/html \</span><br><span class="line">-d nginx</span><br></pre></td></tr></table></figure>
+<pre><code>docker run \
+-p 80:80 \
+--name nginx \
+-v $PWD/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
+-v $PWD/nginx/conf/conf.d:/etc/nginx/conf.d \
+-v $PWD/nginx/log:/var/log/nginx \
+-v $PWD/nginx/html:/usr/share/nginx/html \
+-d nginx
+</code></pre>
+
         </div>
 
         <section class="post-tags">
@@ -274,11 +261,11 @@
     </article>
 </div>
 
-    </div>
-    <footer id="footer" class="footer">
+        </div>
+        <footer id="footer" class="footer">
     <div class="copyright">
         <span>
-            © LiHaiyang | Powered by
+            © John Doe | Powered by
             <a href="https://hexo.io" target="_blank">Hexo</a>
             &
             <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>
@@ -287,8 +274,10 @@
         </span>
     </div>
 </footer>
-
-</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4.25.0/dist/tocbot.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </body>
 
 </html>
