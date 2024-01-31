@@ -233,8 +233,8 @@
 <h3 id="安装openssh"><a href="#安装openssh" class="headerlink" title="安装openssh"></a>安装openssh</h3><p>在OpenSSH文件夹下运行 <code>.\install-sshd.ps1</code> 命令</p>
 <h3 id="sshd服务"><a href="#sshd服务" class="headerlink" title="sshd服务"></a>sshd服务</h3><p>打开服务。在列表中找到 <strong>sshd（OpenSSH SSH Server）</strong> ，并将启动类型更改为 <strong>自动</strong> 。然后运行sshd。</p>
 <h3 id="修改端口"><a href="#修改端口" class="headerlink" title="修改端口"></a>修改端口</h3><p>修改 <code>C:\ProgramData\ssh</code> 目录下 <strong>sshd_config</strong> 文件。<br><em>在ssh服务启动后，才可以修改，修改之后再重启服务即可</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Port 22</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">Port 22
+</code></pre>
 <h3 id="生成主机密钥"><a href="#生成主机密钥" class="headerlink" title="生成主机密钥"></a>生成主机密钥</h3><p>在OpenSSH文件夹下运行 <code>.\ssh-keygen.exe -A</code> 命令</p>
 
         </div>
@@ -245,9 +245,9 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/Windows/"># Windows</a>
-                    
                         <a href="/tags/SSH/"># SSH</a>
+                    
+                        <a href="/tags/Windows/"># Windows</a>
                     
                         
                 </span>

@@ -227,35 +227,35 @@
 
         <div class="post-content">
             <p>启动 redis 客户端</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h host -p port -a password</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">redis-cli -h host -p port -a password
+</code></pre>
 <h2 id="Redis中key的操作命令"><a href="#Redis中key的操作命令" class="headerlink" title="Redis中key的操作命令"></a>Redis中key的操作命令</h2><p>查看当前数据库中有哪些key</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keys *</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">keys *
+</code></pre>
 <p>查看key的剩余生存时间，以秒为单位，返回-1为永不过期，-2为不存在</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ttl key</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">ttl key
+</code></pre>
 <p>判断key是否存在：存在返回1，不存在返回0，多个key返回存在的数量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exists key1 key2</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">exists key1 key2
+</code></pre>
 <p>设置key的生存时间，超过时间key自动删除，单位是秒，成功返回1，失败为0</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expire key seconds</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">expire key seconds
+</code></pre>
 <p>清空当前</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flushdb</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">flushdb
+</code></pre>
 <p>清空所有库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flushall</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">flushall
+</code></pre>
 <p>获取redis的所有配置项</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config get *</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">config get *
+</code></pre>
 <p>给key改名字，当key和newkey相同，或者newkey不存在时返回一个错误</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename key newkey</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">rename key newkey
+</code></pre>
 <p>查看key所存储值的数据类型</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span> key</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">type key
+</code></pre>
 <h2 id="字符串类型：String"><a href="#字符串类型：String" class="headerlink" title="字符串类型：String"></a>字符串类型：String</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ul>
 <li>redis中最基本的数据结构，能存储任何类型的数据，甚至是图片，最大512M</li>
 </ul>
@@ -263,11 +263,11 @@
 <li>字符串类型的数据操作总的思想是通过key操作value，key是数据标识，value是我们感兴趣的业务数据</li>
 </ul>
 <h3 id="常用操作命令"><a href="#常用操作命令" class="headerlink" title="常用操作命令"></a>常用操作命令</h3><p>将字符串值 value 设置到 key 中，如果key已存在，后放的值会把前放的值覆盖掉</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> key value</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">set key value
+</code></pre>
 <p>获取 key 中设置的字符串值,key存在，返回key对应的value；key不存在，返回null</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get key</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">get key
+</code></pre>
 <h2 id="列表：List"><a href="#列表：List" class="headerlink" title="列表：List"></a>列表：List</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><ul>
 <li>Redis列表是简单的字符串列表，按照插入顺序排序，左边（头部）、右边（尾部）或者中间都可以添加元素。底层是个链表结构，链表的操作无论是头或者尾效率都极高，但是如果对中间元素进行操作，那效率会大大降低了。</li>
 </ul>
@@ -275,14 +275,14 @@
 <li>列表类型的数据操作总的思想是通过key和下标操作value，key是数据标识，下标是数据在列表中的位置，value是我们感兴趣的业务数据</li>
 </ul>
 <h3 id="常用操作命令-1"><a href="#常用操作命令-1" class="headerlink" title="常用操作命令"></a>常用操作命令</h3><p>将一个或多个值 value 插入到列表 key 的最左边（表头），各个value值依次插入到表头位置。返回值：插入之后的列表的长度</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpush key value1 value2[value...]</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">lpush key value1 value2[value...]
+</code></pre>
 <p>将一个或多个值 value 插入到列表 key 的最右边（表尾），各个 value 值按依次插入到表尾。返回值：插入之后的列表的长度</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lpush key value1 value2[value...]</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">lpush key value1 value2[value...]
+</code></pre>
 <p>获取列表 key 中指定下标区间内的元素，下标从0开始，到列表长度-1；下标也可以是负数，表示列表从后往前取，-1表示倒数第一个元素，-2表示倒数第二个元素，以此类推；startIndex和endIndex超出范围不会报错。<br>返回值：获取到的元素列表</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lrange key startIndex endIndex</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">lrange key startIndex endIndex
+</code></pre>
 <h2 id="集合类型：Set"><a href="#集合类型：Set" class="headerlink" title="集合类型：Set"></a>集合类型：Set</h2><h3 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h3><ul>
 <li>Redis的Set是string类型的无序不重复集合</li>
 </ul>

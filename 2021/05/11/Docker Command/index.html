@@ -227,37 +227,41 @@
 
         <div class="post-content">
             <h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><p>查看所有的容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a </span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">docker ps -a 
+</code></pre>
 <p>所有的镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image <span class="built_in">ls</span> </span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">docker image ls 
+</code></pre>
 <p>删除镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi xxxxx </span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">docker rmi xxxxx 
+</code></pre>
 <p>删除容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> -f xxxxxx</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">docker rm -f xxxxxx
+</code></pre>
 <p>设置开机自启动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker update --restart=always xxxxxx</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">docker update --restart=always xxxxxx
+</code></pre>
 <p>进入容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it xxxxx /bin/sh</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">docker exec -it xxxxx /bin/sh
+</code></pre>
 <h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><p>启动应容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">docker-compose up
+</code></pre>
 <p>后台启动容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">docker-compose up -d
+</code></pre>
 <p>列出项目中目前的所有容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose ps</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">docker-compose ps
+</code></pre>
 <p>停止容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">docker-compose stop
+</code></pre>
 <p>解决时区不同步问题</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line"></span><br><span class="line"><span class="built_in">date</span> -R</span><br></pre></td></tr></table></figure>
+<pre><code class="Bash">cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+date -R
+</code></pre>
+
         </div>
 
         <section class="post-tags">

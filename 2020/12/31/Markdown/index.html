@@ -285,10 +285,14 @@
 祝您，早上好，中午好，下午好，晚安
 </code></pre>
 <h4 id="语法2"><a href="#语法2" class="headerlink" title="语法2"></a>语法2</h4><p>使用一对各三个的反引号：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">欢迎到访</span><br><span class="line">我是C++码农</span><br><span class="line">你可以在知乎、CSDN、简书搜索【果冻虾仁】找到我</span><br></pre></td></tr></table></figure>
+<pre><code>欢迎到访
+我是C++码农
+你可以在知乎、CSDN、简书搜索【果冻虾仁】找到我
+</code></pre>
 <p>该语法也可以实现代码高亮，见<a href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE">代码高亮</a></p>
 <h3 id="文字高亮"><a href="#文字高亮" class="headerlink" title="文字高亮"></a>文字高亮</h3><p>文字高亮功能能使行内部分文字高亮，使用一对反引号。<br>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`linux` `网络编程` `socket` `epoll` </span><br></pre></td></tr></table></figure>
+<pre><code>`linux` `网络编程` `socket` `epoll` 
+</code></pre>
 <p>效果：<code>linux</code> <code>网络编程</code> <code>socket</code> <code>epoll</code></p>
 <p>也适合做一篇文章的tag</p>
 <h4 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h4><p>直接回车不能换行，<br>可以在上一行文本后面补两个空格，<br>这样下一行的文本就换行了。</p>
@@ -341,15 +345,16 @@
 <pre><code>斜体、粗体、删除线可混合使用
 </code></pre>
 <h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>基本格式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![alt](URL title)</span><br></pre></td></tr></table></figure>
+<pre><code>![alt](URL title)
+</code></pre>
 <p>alt和title即对应HTML中的alt和title属性（都可省略）：</p>
 <ul>
 <li>alt表示图片显示失败时的替换文本</li>
 <li>title表示鼠标悬停在图片时的显示文本（注意这里要加引号）</li>
 </ul>
 <p>URL即图片的url地址，如果引用本仓库中的图片，直接使用<strong>相对路径</strong>就可了，如果引用其他github仓库中的图片要注意格式，即：<code>仓库地址/raw/分支名/图片路径</code>，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif</span><br></pre></td></tr></table></figure>
-
+<pre><code>https://github.com/guodongxiaren/ImageCache/raw/master/Logo/foryou.gif
+</code></pre>
 <table>
 <thead>
 <tr>
@@ -373,8 +378,8 @@
 <blockquote>
 <p>在文末有code-past的定义：</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[code-past]:/img/codepast-logo.jpg &quot;公众号：编程往事&quot;</span><br></pre></td></tr></table></figure>
-
+<pre><code>[code-past]:/img/codepast-logo.jpg &quot;公众号：编程往事&quot;
+</code></pre>
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><h3 id="链接外部URL"><a href="#链接外部URL" class="headerlink" title="链接外部URL"></a>链接外部URL</h3><table>
 <thead>
 <tr>
@@ -467,7 +472,10 @@
 <blockquote>
 <p>以前GitHub对中文支持的不好，所以中文标题不能正确识别为锚点，但是现在已经没问题啦！</p>
 </blockquote>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 昵称：果冻虾仁</span><br><span class="line">- 别名：隔壁老王</span><br><span class="line">* 英文名：Jelly</span><br></pre></td></tr></table></figure>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><pre><code>* 昵称：果冻虾仁
+- 别名：隔壁老王
+* 英文名：Jelly
+</code></pre>
 <h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><ul>
 <li>昵称：果冻虾仁</li>
 </ul>
@@ -477,7 +485,10 @@
 <ul>
 <li>英文名：Jelly</li>
 </ul>
-<h3 id="多级无序列表"><a href="#多级无序列表" class="headerlink" title="多级无序列表"></a>多级无序列表</h3><h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 编程语言</span><br><span class="line">    * 脚本语言</span><br><span class="line">        * Python</span><br></pre></td></tr></table></figure>
+<h3 id="多级无序列表"><a href="#多级无序列表" class="headerlink" title="多级无序列表"></a>多级无序列表</h3><h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><pre><code>* 编程语言
+    * 脚本语言
+        * Python
+</code></pre>
 <h4 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h4><ul>
 <li>编程语言<ul>
 <li>脚本语言<ul>
@@ -488,8 +499,12 @@
 </li>
 </ul>
 <h3 id="一级有序列表"><a href="#一级有序列表" class="headerlink" title="一级有序列表"></a>一级有序列表</h3><h4 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h4><p>就是在数字后面加一个点，再加一个空格。不过看起来起来可能不够明显。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">面向对象的三个基本特征：</span><br><span class="line"></span><br><span class="line">1. 封装</span><br><span class="line">2. 继承</span><br><span class="line">3. 多态</span><br></pre></td></tr></table></figure>
+<pre><code>面向对象的三个基本特征：
 
+1. 封装
+2. 继承
+3. 多态
+</code></pre>
 <h4 id="效果-2"><a href="#效果-2" class="headerlink" title="效果"></a>效果</h4><p>面向对象的三个基本特征：</p>
 <ol>
 <li>封装</li>
@@ -497,8 +512,10 @@
 <li>多态</li>
 </ol>
 <h3 id="多级有序列表"><a href="#多级有序列表" class="headerlink" title="多级有序列表"></a>多级有序列表</h3><p>和无序列表一样，有序列表也有多级结构。</p>
-<h4 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 这是一级的有序列表，数字1还是1</span><br><span class="line">   1. 这是二级的有序列表，阿拉伯数字在显示的时候变成了罗马数字</span><br><span class="line">      1. 这是三级的有序列表，数字在显示的时候变成了英文字母</span><br></pre></td></tr></table></figure>
-
+<h4 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h4><pre><code>1. 这是一级的有序列表，数字1还是1
+   1. 这是二级的有序列表，阿拉伯数字在显示的时候变成了罗马数字
+      1. 这是三级的有序列表，数字在显示的时候变成了英文字母
+</code></pre>
 <h4 id="效果-3"><a href="#效果-3" class="headerlink" title="效果"></a>效果</h4><ol>
 <li>这是一级的有序列表，数字1还是1<ol>
 <li>这是二级的有序列表，阿拉伯数字在显示的时候变成了罗马数字<ol>
@@ -508,7 +525,13 @@
 </ol>
 </li>
 </ol>
-<h3 id="复选框列表"><a href="#复选框列表" class="headerlink" title="复选框列表"></a>复选框列表</h3><h4 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- [x] 需求分析</span><br><span class="line">- [x] 系统设计</span><br><span class="line">- [x] 详细设计</span><br><span class="line">- [ ] 编码</span><br><span class="line">- [ ] 测试</span><br><span class="line">- [ ] 交付</span><br></pre></td></tr></table></figure>
+<h3 id="复选框列表"><a href="#复选框列表" class="headerlink" title="复选框列表"></a>复选框列表</h3><h4 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h4><pre><code>- [x] 需求分析
+- [x] 系统设计
+- [x] 详细设计
+- [ ] 编码
+- [ ] 测试
+- [ ] 交付
+</code></pre>
 <h4 id="效果-4"><a href="#效果-4" class="headerlink" title="效果"></a>效果</h4><ul>
 <li><input checked="" disabled="" type="checkbox"> 需求分析</li>
 <li><input checked="" disabled="" type="checkbox"> 系统设计</li>
@@ -528,7 +551,12 @@
 <blockquote>
 <p><strong>“端”（endian）的起源</strong><br>以下是Jonathan Swift在1726年关于大小端之争历史的描述：<br>“……下面我要告诉你的是，Lilliput和Blefuscu这两大强国在过去36个月里一直在苦战。战争开始是由于以下的原因：我们大家都认为，吃鸡蛋前，原始的方法是打破鸡蛋较大的一端，可是当今的皇帝的祖父小时候吃鸡蛋，一次按古法打鸡蛋时碰巧将一个手指弄破了，因此他的父亲，当时的皇帝，就下了一道敕令，命令全体臣民吃鸡蛋时打破较小的一端，违令者重罚。”</p>
 </blockquote>
-<h3 id="块引用有多级结构"><a href="#块引用有多级结构" class="headerlink" title="块引用有多级结构"></a>块引用有多级结构</h3><h4 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; 数据结构</span><br><span class="line">&gt;&gt; 树</span><br><span class="line">&gt;&gt;&gt; 二叉树</span><br><span class="line">&gt;&gt;&gt;&gt; 平衡二叉树</span><br><span class="line">&gt;&gt;&gt;&gt;&gt; 满二叉树</span><br></pre></td></tr></table></figure>
+<h3 id="块引用有多级结构"><a href="#块引用有多级结构" class="headerlink" title="块引用有多级结构"></a>块引用有多级结构</h3><h4 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h4><pre><code>&gt; 数据结构
+&gt;&gt; 树
+&gt;&gt;&gt; 二叉树
+&gt;&gt;&gt;&gt; 平衡二叉树
+&gt;&gt;&gt;&gt;&gt; 满二叉树
+</code></pre>
 <h4 id="效果-5"><a href="#效果-5" class="headerlink" title="效果"></a>效果</h4><blockquote>
 <p>数据结构</p>
 <blockquote>
@@ -545,11 +573,16 @@
 </blockquote>
 </blockquote>
 <h2 id="代码高亮"><a href="#代码高亮" class="headerlink" title="代码高亮"></a>代码高亮</h2><h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><p>在三个反引号后面加上编程语言的名字，另起一行开始写代码，最后一行再加上三个反引号。</p>
-<h3 id="效果-6"><a href="#效果-6" class="headerlink" title="效果"></a>效果</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[]args)</span>&#123;&#125; <span class="comment">//Java</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> <span class="comment">//C</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;hello GitHub&quot;</span> <span class="comment">#Bash</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myH1&quot;</span>).<span class="property">innerHTML</span>=<span class="string">&quot;Welcome to my Homepage&quot;</span>; <span class="comment">//javascipt</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string &amp;<span class="keyword">operator</span>+(<span class="type">const</span> string&amp; A,<span class="type">const</span> string&amp; B) <span class="comment">//cpp</span></span><br></pre></td></tr></table></figure>
+<h3 id="效果-6"><a href="#效果-6" class="headerlink" title="效果"></a>效果</h3><pre><code class="Java">public static void main(String[]args)&#123;&#125; //Java
+</code></pre>
+<pre><code class="c">int main(int argc, char *argv[]) //C
+</code></pre>
+<pre><code class="Bash">echo &quot;hello GitHub&quot; #Bash
+</code></pre>
+<pre><code class="javascript">document.getElementById(&quot;myH1&quot;).innerHTML=&quot;Welcome to my Homepage&quot;; //javascipt
+</code></pre>
+<pre><code class="cpp">string &amp;operator+(const string&amp; A,const string&amp; B) //cpp
+</code></pre>
 <h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><table>
 <thead>
 <tr>
@@ -643,8 +676,11 @@
 <p>但是这个网页每次都打开<strong>奇慢</strong>。。所以我整理到了本repo中，大家可以直接在此查看<a href="./emoji.md">emoji</a>。</p>
 <h2 id="diff语法"><a href="#diff语法" class="headerlink" title="diff语法"></a>diff语法</h2><p>版本控制的系统中都少不了diff的功能，即展示一个文件内容的增加与删除。<br>GFM中可以显示的展示diff效果。使用绿色表示新增，红色表示删除。</p>
 <h4 id="语法-7"><a href="#语法-7" class="headerlink" title="语法"></a>语法</h4><p>其语法与代码高亮类似，只是在三个反引号后面写diff，<br>并且其内容中，可以用 <code>+ </code>开头表示新增，<code>- </code>开头表示删除。<br>另外还有有 <code>!</code>和<code>#</code>的语法。</p>
-<h4 id="效果-7"><a href="#效果-7" class="headerlink" title="效果"></a>效果</h4><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+ 人闲桂花落，</span></span><br><span class="line"><span class="deletion">- 夜静春山空。</span></span><br><span class="line"><span class="addition">! 月出惊山鸟，</span></span><br><span class="line"># 时鸣春涧中。</span><br></pre></td></tr></table></figure>
-
+<h4 id="效果-7"><a href="#效果-7" class="headerlink" title="效果"></a>效果</h4><pre><code class="diff">+ 人闲桂花落，
+- 夜静春山空。
+! 月出惊山鸟，
+# 时鸣春涧中。
+</code></pre>
 <hr>
 
         </div>

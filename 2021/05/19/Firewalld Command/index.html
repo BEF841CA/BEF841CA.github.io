@@ -227,34 +227,36 @@
 
         <div class="post-content">
             <h2 id="firewall防火墙"><a href="#firewall防火墙" class="headerlink" title="firewall防火墙"></a>firewall防火墙</h2><p>查看firewall服务状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">systemctl status firewalld
+</code></pre>
 <p>查看firewall的状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --state</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">firewall-cmd --state
+</code></pre>
 <p>开启 firewalld.service服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service firewalld start</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">service firewalld start
+</code></pre>
 <p>重启 firewalld.service服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service firewalld restart</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">service firewalld restart
+</code></pre>
 <p>关闭 firewalld.service服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service firewalld stop</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">service firewalld stop
+</code></pre>
 <p>查看防火墙规则</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">firewall-cmd --list-all
+</code></pre>
 <p>查询端口是否开放</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --query-port=8080/tcp</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">firewall-cmd --query-port=8080/tcp
+</code></pre>
 <p>开放80端口</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=80/tcp</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">firewall-cmd --permanent --add-port=80/tcp
+</code></pre>
 <p>移除端口</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --remove-port=8080/tcp</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">firewall-cmd --permanent --remove-port=8080/tcp
+</code></pre>
 <p>重启防火墙(修改配置后要重启防火墙)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<pre><code class="Bash">firewall-cmd --reload
+</code></pre>
+
         </div>
 
         <section class="post-tags">

@@ -228,13 +228,23 @@
         <div class="post-content">
             <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>PPA是Personal Package Archives，个人软件包文档，是默认情况下并未被包含在Ubuntu中的软件的一个集合。通常这些存储库的侧重点是单个的程序，不过他们也可以包含更多内容，这取决于这些存储库的维护者</p>
 <h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>一个完整的通过PPA源安装软件的命令，例如添加VLC播放器源并安装的命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:videolan/stable-daily <span class="comment">#添加videolan/stable-daily源</span></span><br><span class="line">sudo apt-get update <span class="comment">#更新系统源</span></span><br><span class="line">sudo apt-get install vlc <span class="comment">#安装VLC软件</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">sudo add-apt-repository ppa:videolan/stable-daily #添加videolan/stable-daily源
+sudo apt-get update #更新系统源
+sudo apt-get install vlc #安装VLC软件
+</code></pre>
 <h2 id="使用PPA安装nodeJs"><a href="#使用PPA安装nodeJs" class="headerlink" title="使用PPA安装nodeJs"></a>使用PPA安装nodeJs</h2><p>nodejs 14.x 版本，可以运行如下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install nodejs</span><br></pre></td></tr></table></figure>
-
+<pre><code class="Bash">cd ~
+curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+sudo apt update
+sudo apt install nodejs
+</code></pre>
 <p>要安装 nodejs 最新版本，可以运行如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">curl -sL https://deb.nodesource.com/setup | sudo bash -</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install nodejs</span><br></pre></td></tr></table></figure>
+<pre><code class="Bash">cd ~
+curl -sL https://deb.nodesource.com/setup | sudo bash -
+sudo apt update
+sudo apt install nodejs
+</code></pre>
+
         </div>
 
         <section class="post-tags">

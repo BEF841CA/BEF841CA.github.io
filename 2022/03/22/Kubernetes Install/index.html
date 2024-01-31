@@ -233,40 +233,97 @@
 </ol>
 <h2 id="环境初始化"><a href="#环境初始化" class="headerlink" title="环境初始化"></a>环境初始化</h2><h3 id="关闭swap交换分区"><a href="#关闭swap交换分区" class="headerlink" title="关闭swap交换分区"></a>关闭swap交换分区</h3><p><em>防止Docker安装容器时安装到swap分区</em></p>
 <p>临时关闭</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a</span><br></pre></td></tr></table></figure>
-
+<pre><code>swapoff -a
+</code></pre>
 <p>永久关闭</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fstab</span><br><span class="line"># 注释掉最后一行的swap</span><br></pre></td></tr></table></figure>
-
-<h3 id="开启ip转发"><a href="#开启ip转发" class="headerlink" title="开启ip转发"></a>开启ip转发</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysctl.conf</span><br><span class="line"># 开启net.ipv4.ip_forward </span><br><span class="line">net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
-
+<pre><code>vim /etc/fstab
+# 注释掉最后一行的swap
+</code></pre>
+<h3 id="开启ip转发"><a href="#开启ip转发" class="headerlink" title="开启ip转发"></a>开启ip转发</h3><pre><code>vim /etc/sysctl.conf
+# 开启net.ipv4.ip_forward 
+net.ipv4.ip_forward=1
+</code></pre>
 <p>查看状态</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><h3 id="使用官方安装脚本自动安装"><a href="#使用官方安装脚本自动安装" class="headerlink" title="使用官方安装脚本自动安装"></a>使用官方安装脚本自动安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br></pre></td></tr></table></figure>
+<pre><code>sysctl -p
+</code></pre>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><h3 id="使用官方安装脚本自动安装"><a href="#使用官方安装脚本自动安装" class="headerlink" title="使用官方安装脚本自动安装"></a>使用官方安装脚本自动安装</h3><pre><code>curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+</code></pre>
 <h3 id="修改Dockers驱动"><a href="#修改Dockers驱动" class="headerlink" title="修改Dockers驱动"></a>修改Dockers驱动</h3><p><em>避免和kubelet和docker的驱动程序不一致 导致kubelet启动失败</em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/docker/daemon.json</span><br><span class="line"># 添加配置</span><br><span class="line">&#123;</span><br><span class="line"> &quot;exec-opts&quot;:[&quot;native.cgroupdriver=systemd&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>vim /etc/docker/daemon.json
+# 添加配置
+&#123;
+ &quot;exec-opts&quot;:[&quot;native.cgroupdriver=systemd&quot;]
+&#125;
+</code></pre>
 <p>重启Docker</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装k8s"><a href="#安装k8s" class="headerlink" title="安装k8s"></a>安装k8s</h2><h3 id="添加阿里云证书"><a href="#添加阿里云证书" class="headerlink" title="添加阿里云证书"></a>添加阿里云证书</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - </span><br></pre></td></tr></table></figure>
-<h3 id="添加阿里云apt源"><a href="#添加阿里云apt源" class="headerlink" title="添加阿里云apt源"></a>添加阿里云apt源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt; EOF &gt;/etc/apt/sources.list.d/kubernetes.list</span><br><span class="line">deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main</span><br><span class="line">EOF  </span><br></pre></td></tr></table></figure>
-<h3 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
-<h3 id="查看可kubelet安装版本"><a href="#查看可kubelet安装版本" class="headerlink" title="查看可kubelet安装版本"></a>查看可kubelet安装版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache madison kubelet</span><br></pre></td></tr></table></figure>
-<h3 id="安装kubelet"><a href="#安装kubelet" class="headerlink" title="安装kubelet"></a>安装kubelet</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 安装最新版本</span><br><span class="line">apt install -y kubelet kubeadm kubectl</span><br><span class="line"># 安装制定版本</span><br><span class="line">apt install -y kubelet=1.18.4-00 kubeadm=1.18.4-00 kubectl=1.18.4-00</span><br></pre></td></tr></table></figure>
-<h3 id="启动kubelet"><a href="#启动kubelet" class="headerlink" title="启动kubelet"></a>启动kubelet</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">systemctl start kubelet</span><br><span class="line"># 设置开机自启</span><br><span class="line">systemctl enable kubelet </span><br><span class="line"># 查看状态</span><br><span class="line">systemctl status kubelet </span><br></pre></td></tr></table></figure>
-<h3 id="查看安装所需镜像"><a href="#查看安装所需镜像" class="headerlink" title="查看安装所需镜像"></a>查看安装所需镜像</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubeadm config images list</span><br><span class="line"># 指定版本号</span><br><span class="line">kubeadm config images list --kubernetes-version=v1.18.4</span><br></pre></td></tr></table></figure>
+<pre><code>systemctl restart docker
+</code></pre>
+<h2 id="安装k8s"><a href="#安装k8s" class="headerlink" title="安装k8s"></a>安装k8s</h2><h3 id="添加阿里云证书"><a href="#添加阿里云证书" class="headerlink" title="添加阿里云证书"></a>添加阿里云证书</h3><pre><code>curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - 
+</code></pre>
+<h3 id="添加阿里云apt源"><a href="#添加阿里云apt源" class="headerlink" title="添加阿里云apt源"></a>添加阿里云apt源</h3><pre><code>cat &lt;&lt; EOF &gt;/etc/apt/sources.list.d/kubernetes.list
+deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main
+EOF  
+</code></pre>
+<h3 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h3><pre><code>apt update
+</code></pre>
+<h3 id="查看可kubelet安装版本"><a href="#查看可kubelet安装版本" class="headerlink" title="查看可kubelet安装版本"></a>查看可kubelet安装版本</h3><pre><code>apt-cache madison kubelet
+</code></pre>
+<h3 id="安装kubelet"><a href="#安装kubelet" class="headerlink" title="安装kubelet"></a>安装kubelet</h3><pre><code># 安装最新版本
+apt install -y kubelet kubeadm kubectl
+# 安装制定版本
+apt install -y kubelet=1.18.4-00 kubeadm=1.18.4-00 kubectl=1.18.4-00
+</code></pre>
+<h3 id="启动kubelet"><a href="#启动kubelet" class="headerlink" title="启动kubelet"></a>启动kubelet</h3><pre><code>systemctl start kubelet
+# 设置开机自启
+systemctl enable kubelet 
+# 查看状态
+systemctl status kubelet 
+</code></pre>
+<h3 id="查看安装所需镜像"><a href="#查看安装所需镜像" class="headerlink" title="查看安装所需镜像"></a>查看安装所需镜像</h3><pre><code>kubeadm config images list
+# 指定版本号
+kubeadm config images list --kubernetes-version=v1.18.4
+</code></pre>
 <h3 id="从阿里云下载镜像"><a href="#从阿里云下载镜像" class="headerlink" title="从阿里云下载镜像"></a>从阿里云下载镜像</h3><p><em>kubeadm 默认镜像源地址为Google源 科学上网请忽略</em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.18.4</span><br><span class="line">docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.18.4</span><br><span class="line">docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.18.4</span><br><span class="line">docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.18.4</span><br><span class="line">docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.2</span><br><span class="line">docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.4.3-0</span><br><span class="line">docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.6.7</span><br></pre></td></tr></table></figure>
+<pre><code>docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.18.4
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.18.4
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.18.4
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.18.4
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.2
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.4.3-0
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.6.7
+</code></pre>
 <h3 id="为镜像重新打tag"><a href="#为镜像重新打tag" class="headerlink" title="为镜像重新打tag"></a>为镜像重新打tag</h3><p><em>科学上网请忽略</em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.18.4 k8s.gcr.io/kube-apiserver:v1.18.4</span><br><span class="line">docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.18.4 k8s.gcr.io/kube-controller-manager:v1.18.4</span><br><span class="line">docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.18.4 k8s.gcr.io/kube-scheduler:v1.18.4</span><br><span class="line">docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.18.4 k8s.gcr.io/kube-proxy:v1.18.4</span><br><span class="line">docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.2 k8s.gcr.io/pause:3.2</span><br><span class="line">docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.4.3-0 k8s.gcr.io/etcd:3.4.3-0</span><br><span class="line">docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.6.7 k8s.gcr.io/coredns:1.6.7</span><br></pre></td></tr></table></figure>
-<h3 id="初始化master节点"><a href="#初始化master节点" class="headerlink" title="初始化master节点"></a>初始化master节点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init --kubernetes-version=v1.18.4 --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=Swap</span><br><span class="line"># kubernetes-version kubernetes版本号 跟安装的kubeadm保持一致</span><br><span class="line"># pod-network-cidr pod网段 </span><br><span class="line"># ignore-preflight-errors 忽略运行的错误</span><br><span class="line"># 其他选项可以通过kubeadm init --help查看</span><br></pre></td></tr></table></figure>
-<h3 id="重置master"><a href="#重置master" class="headerlink" title="重置master"></a>重置master</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm reset</span><br></pre></td></tr></table></figure>
-<h3 id="添加网络组件"><a href="#添加网络组件" class="headerlink" title="添加网络组件"></a>添加网络组件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml</span><br><span class="line"># gituhb 代理</span><br><span class="line">kubectl apply -f https://cdn.jsdelivr.net/gh/coreos/flannel@master/Documentation/kube-flannel.yml</span><br></pre></td></tr></table></figure>
-
-<h3 id="检查状态"><a href="#检查状态" class="headerlink" title="检查状态"></a>检查状态</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pods -n kube-system -l app=flannel</span><br><span class="line"># 集群状态</span><br><span class="line">kubectl get componentstatus</span><br><span class="line"># 检查节点是否准备完成</span><br><span class="line">kubectl get nodes</span><br></pre></td></tr></table></figure>
-
-<h2 id="node-节点加入-master主机"><a href="#node-节点加入-master主机" class="headerlink" title="node 节点加入 master主机"></a>node 节点加入 master主机</h2><h3 id="重新生成token"><a href="#重新生成token" class="headerlink" title="重新生成token"></a>重新生成token</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//master主机上重新生成token</span><br><span class="line">kubeadm token generate</span><br><span class="line">#根据token输出添加命令</span><br><span class="line">kubeadm token create xxxx(上面输出的token) --print-join-command --ttl=0   </span><br></pre></td></tr></table></figure>
+<pre><code>docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.18.4 k8s.gcr.io/kube-apiserver:v1.18.4
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.18.4 k8s.gcr.io/kube-controller-manager:v1.18.4
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.18.4 k8s.gcr.io/kube-scheduler:v1.18.4
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.18.4 k8s.gcr.io/kube-proxy:v1.18.4
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.2 k8s.gcr.io/pause:3.2
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/etcd:3.4.3-0 k8s.gcr.io/etcd:3.4.3-0
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/coredns:1.6.7 k8s.gcr.io/coredns:1.6.7
+</code></pre>
+<h3 id="初始化master节点"><a href="#初始化master节点" class="headerlink" title="初始化master节点"></a>初始化master节点</h3><pre><code>kubeadm init --kubernetes-version=v1.18.4 --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=Swap
+# kubernetes-version kubernetes版本号 跟安装的kubeadm保持一致
+# pod-network-cidr pod网段 
+# ignore-preflight-errors 忽略运行的错误
+# 其他选项可以通过kubeadm init --help查看
+</code></pre>
+<h3 id="重置master"><a href="#重置master" class="headerlink" title="重置master"></a>重置master</h3><pre><code>kubeadm reset
+</code></pre>
+<h3 id="添加网络组件"><a href="#添加网络组件" class="headerlink" title="添加网络组件"></a>添加网络组件</h3><pre><code>kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+# gituhb 代理
+kubectl apply -f https://cdn.jsdelivr.net/gh/coreos/flannel@master/Documentation/kube-flannel.yml
+</code></pre>
+<h3 id="检查状态"><a href="#检查状态" class="headerlink" title="检查状态"></a>检查状态</h3><pre><code>kubectl get pods -n kube-system -l app=flannel
+# 集群状态
+kubectl get componentstatus
+# 检查节点是否准备完成
+kubectl get nodes
+</code></pre>
+<h2 id="node-节点加入-master主机"><a href="#node-节点加入-master主机" class="headerlink" title="node 节点加入 master主机"></a>node 节点加入 master主机</h2><h3 id="重新生成token"><a href="#重新生成token" class="headerlink" title="重新生成token"></a>重新生成token</h3><pre><code>//master主机上重新生成token
+kubeadm token generate
+#根据token输出添加命令
+kubeadm token create xxxx(上面输出的token) --print-join-command --ttl=0   
+</code></pre>
 
         </div>
 

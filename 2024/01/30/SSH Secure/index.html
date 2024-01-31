@@ -220,19 +220,19 @@
 
         <div class="post-content">
             <h1 id="登录信息"><a href="#登录信息" class="headerlink" title="登录信息"></a>登录信息</h1><h2 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h2><p>查看登录日志</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> /<span class="keyword">var</span>/<span class="keyword">log</span>/auth.<span class="keyword">log</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/auth.log</span><br></pre></td></tr></table></figure>
 
 <p>查看尝试登录IP和尝试登录的用户名</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> /<span class="keyword">var</span>/<span class="keyword">log</span>/auth.<span class="keyword">log</span> | grep &#x27;Invalid&#x27; | awk &#x27;&#123;<span class="keyword">print</span> <span class="variable">$10</span> <span class="string">&quot;\t&quot;</span> <span class="variable">$8&#125;</span>&#x27; | <span class="keyword">sort</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/auth.log | grep &#x27;Invalid&#x27; | awk &#x27;&#123;print $10 &quot;\t&quot; $8&#125;&#x27; | sort</span><br></pre></td></tr></table></figure>
 
 <p>查看尝试登录用户名次数统计</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> /var/<span class="built_in">log</span>/auth.<span class="built_in">log</span> | <span class="keyword">grep</span> <span class="string">&#x27;Invalid&#x27;</span> | awk <span class="string">&#x27;&#123;print $8&#125;&#x27;</span> | <span class="keyword">sort</span> | uniq -<span class="keyword">c</span> | <span class="keyword">sort</span> -<span class="keyword">bn</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/auth.log | grep &#x27;Invalid&#x27; | awk &#x27;&#123;print $8&#125;&#x27; | sort | uniq -c | sort -bn</span><br></pre></td></tr></table></figure>
 
 <h2 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h2><p>显示登录失败的用户</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lastb</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lastb</span><br></pre></td></tr></table></figure>
 
 <p>统计登录失败次数命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lastb | awk <span class="string">&#x27;&#123; print $3&#125;&#x27;</span> | <span class="built_in">sort</span> | <span class="built_in">uniq</span> -c | <span class="built_in">sort</span> -n</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lastb | awk &#x27;&#123; print $3&#125;&#x27; | sort | uniq -c | sort -n</span><br></pre></td></tr></table></figure>
 
         </div>
 
