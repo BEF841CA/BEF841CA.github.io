@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
+title: 青骓.
+subtitle: '少年的梦发烫 晒过月与太阳 随风自生自长 有朝乘长风破万里浪'
 description: ''
 keywords:
-author: John Doe
-language: en
+author: LiHaiyang
+language: cn
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://bruce.red/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
