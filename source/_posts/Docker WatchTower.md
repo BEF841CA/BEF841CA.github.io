@@ -8,13 +8,13 @@ category: Docker
 # [watchtower](https://containrrr.dev/watchtower)
 
 ## 示例
-```
+```Bash
 docker run -d -e TZ=Asia/Shanghai --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --schedule  "0 0 5 * * *"
 ```
 ## 配置
 
 ### 时区
-```
+```plaintext
             Argument: N/A
 Environment Variable: TZ
                 Type: String
@@ -22,7 +22,7 @@ Environment Variable: TZ
 ```
 
 ### 自动清理
-```
+```plaintext
             Argument: --cleanup
 Environment Variable: WATCHTOWER_CLEANUP
                 Type: Boolean
@@ -30,7 +30,7 @@ Environment Variable: WATCHTOWER_CLEANUP
 ```
 
 ### 删除匿名卷
-```
+```plaintext
             Argument: --cleanup
 Environment Variable: WATCHTOWER_CLEANUP
                 Type: Boolean
@@ -38,7 +38,7 @@ Environment Variable: WATCHTOWER_CLEANUP
 ```
 
 ### 轮询间隔
-```
+```plaintext
             Argument: --interval, -i
 Environment Variable: WATCHTOWER_POLL_INTERVAL
                 Type: Integer
@@ -48,27 +48,27 @@ Environment Variable: WATCHTOWER_POLL_INTERVAL
 ## 通知
 
 ### 通知日志级别
-```
+```plaintext
             Argument: --notifications-level
 Environment Variable: WATCHTOWER_NOTIFICATIONS_LEVEL
                 Type: String
              Default: info (panic, fatal, error, warn, info, debug, trace)
 ```
 ### 主机名
-```
+```plaintext
             Argument: --notifications-hostname
 Environment Variable: WATCHTOWER_NOTIFICATIONS_HOSTNAME
                 Type: String
 ```
 ### 标题前缀
-```
+```plaintext
             Argument: --notification-title-tag
 Environment Variable: WATCHTOWER_NOTIFICATION_TITLE_TAG
                 Type: String
 ```
 ### 通知url
 使用[shoutrrr](https://containrrr.dev/shoutrrr/)发送通知
-```
+```plaintext
             Argument: --notification-url
 Environment Variable: WATCHTOWER_NOTIFICATION_URL
                 Type: String

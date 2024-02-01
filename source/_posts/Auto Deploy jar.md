@@ -7,7 +7,7 @@ category: JAVA
 
 ## 自动部署sh脚本文件
 
-```language
+```Bash
 #!/bin/bash
 
 export JAVA_HOME=/usr/java/jdk1.8.0_241-amd64
@@ -87,13 +87,13 @@ esac
 
 ### 目录
 
-```Bash
+```plaintext
 /etc/systemd/system
 ```
 
 ### 文件
 
-```Bash
+```plaintext
 [Unit]
 Description=Springboot project for test auto start
 After=syslog.target network.target nss-lookup.target

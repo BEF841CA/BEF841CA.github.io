@@ -26,14 +26,14 @@ Dockerfile 是用来存放构建Docker镜像的文本文件
 用于执行后面跟着的命令行命令。有以下俩种格式  
 shell 格式：
 
-```
+```Bash
 RUN <命令行命令>
 # <命令行命令> 等同于，在终端操作的 shell 命令。
 ```
 
 exec 格式：
 
-```
+```Bash
 RUN ["可执行文件", "参数1", "参数2"]
 # 例如：
 # RUN ["./test.php", "dev", "offline"] 等价于 RUN ./test.php dev offline
@@ -52,7 +52,7 @@ RUN ["可执行文件", "参数1", "参数2"]
 
 格式：
 
-```
+```Bash
 CMD <shell 命令> 
 CMD ["<可执行文件或命令>","<param1>","<param2>",...] 
 CMD ["<param1>","<param2>",...]  # 该写法是为 ENTRYPOINT 指令指定的程序提供默认参数
@@ -71,7 +71,7 @@ CMD ["<param1>","<param2>",...]  # 该写法是为 ENTRYPOINT 指令指定的程
 
 格式：
 
-```
+```Bash
 VOLUME ["<路径1>", "<路径2>"...]
 VOLUME <路径>
 ```
@@ -84,7 +84,7 @@ VOLUME <路径>
 
 格式：
 
-```
+```Bash
 USER <用户名>[:<用户组>]
 ```
 
@@ -95,7 +95,7 @@ WORKDIR 创建的目录才会一直存在。
 
 格式：
 
-```
+```Bash
 WORKDIR <工作目录路径>
 
 ```
@@ -106,7 +106,7 @@ WORKDIR <工作目录路径>
 
 格式：
 
-```
+```Bash
 HEALTHCHECK [选项] CMD <命令>：设置检查容器健康状况的命令
 HEALTHCHECK NONE：如果基础镜像有健康检查指令，使用这行可以屏蔽掉其健康检查指令
 HEALTHCHECK [选项] CMD <命令> : 这边 CMD 后面跟随的命令使用，可以参考 CMD 的用法。
@@ -119,7 +119,7 @@ HEALTHCHECK [选项] CMD <命令> : 这边 CMD 后面跟随的命令使用，可
 
 格式：
 
-```
+```Bash
 ARG <参数名>[=<默认值>]
 ```
 
@@ -134,7 +134,7 @@ ARG <参数名>[=<默认值>]
 
 格式：
 
-```
+```Bash
 EXPOSE <端口1> [<端口2>...]
 ```
 
@@ -144,14 +144,14 @@ EXPOSE <端口1> [<端口2>...]
 
 格式：
 
-```
+```Bash
 ENV <key> <value>
 ENV <key1>=<value1> <key2>=<value2>...
 ```
 
 以下示例设置 NODE_VERSION = 7.2.0 ， 在后续的指令中可以通过 $NODE_VERSION 引用：
 
-```
+```Bash
 ENV NODE_VERSION 7.2.0
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc"
@@ -169,13 +169,13 @@ ADD 指令和 COPY 的使用格类似（同样需求下，官方推荐使用 COP
 复制指令，从上下文目录中复制文件或者目录到容器里指定路径。
 
 格式：
-``` 
+``` Bash
 COPY [--chown=<user>:<group>] <源路径1>...  <目标路径>
 COPY [--chown=<user>:<group>] ["<源路径1>",...  "<目标路径>"]
 ```
 **[--chown=&lt;user&gt;:&lt;group&gt;]** ：可选参数，用户改变复制到容器内文件的拥有者和属组。  
 **<源路径>** ：源文件或者源目录，这里可以是通配符表达式，其通配符规则要满足 Go 的 filepath.Match 规则。例如：
-```
+```Bash
 COPY hom* /mydir/
 COPY hom?.txt /mydi
 ```
@@ -188,7 +188,7 @@ COPY hom?.txt /mydi
 
 格式：
 
-```
+```Bash
 ENTRYPOINT ["<executeable>","<param1>","<param2>",...]
 ```
 

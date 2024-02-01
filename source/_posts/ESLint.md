@@ -7,7 +7,7 @@ category: Develop
 # [ESLint中文网](https://eslint.bootcss.com/)
 
 ## 常见规则列表
-```Bash
+```plaintext
 "no-alert": 0,//禁止使用alert confirm prompt
 "no-array-constructor": 2,//禁止使用数组构造器
 "no-bitwise": 0,//禁止使用按位运算符

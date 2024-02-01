@@ -10,7 +10,7 @@ _根据Kubernetes版本选择对应版本 可去[github releases页面](https://
 
 ### 查看Kubernetes版本
 
-```
+```Bash
 kubectl version
 ```
 
@@ -20,7 +20,7 @@ kubectl version
 
 ## 查看 Pod 状态
 
-```
+```Bash
 kubectl get pods --all-namespaces | grep dashboard
 ```
 
@@ -30,19 +30,19 @@ _删除现有的 dashboard 服务，dashboard 服务的 namespace 是 kubernetes
 
 ### 查看类型
 
-```
+```Bash
 kubectl get svc --all-namespaces
 ```
 
 ### 删除 dashboard 服务
 
-```
+```Bash
 kubectl delete service kubernetes-dashboard --namespace=kubernetes-dashboard
 ```
 
 ### 创建配置文件dashboard-svc.yaml
 
-```
+```Bash
 cat > dashboard-svc.yaml <<-EOF
 kind: Service
 apiVersion: v1
@@ -63,7 +63,7 @@ EOF
 
 ### 创建服务
 
-```
+```Bash
 kubectl apply -f dashboard-svc.yaml
 ```
 
@@ -71,7 +71,7 @@ kubectl apply -f dashboard-svc.yaml
 
 ### 创建配置文件dashboard-svc-account.yaml
 
-```
+```Bash
 cat > dashboard-svc-account.yaml <<-EOF
 apiVersion: v1
 kind: ServiceAccount
@@ -96,13 +96,13 @@ EOF
 
 ### 创建角色
 
-```
+```Bash
 kubectl apply -f dashboard-svc-account.yaml 
 ```
 
 ### 获取token
 
-```
+```Bash
 # 查看账号
 kubectl get secret -n kube-system |grep admin|awk '{print $1}'
 # 获取token
@@ -113,6 +113,6 @@ kubectl describe secret dashboard-admin-token-xxxxx(上面获取的账号) -n ku
 
 ### 查看访问端口
 
-```
+```Bash
 kubectl get svc --all-namespaces | grep dashboard
 ```

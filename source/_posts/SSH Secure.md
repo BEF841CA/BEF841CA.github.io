@@ -10,28 +10,28 @@ category:
 ## Log
 
 查看登录日志
-```
+```Bash
 cat /var/log/auth.log
 ```
 
 查看尝试登录IP和尝试登录的用户名
-```
+```Bash
 cat /var/log/auth.log | grep 'Invalid' | awk '{print $10 "\t" $8}' | sort
 ```
 
 查看尝试登录用户名次数统计
-```
+```Bash
 cat /var/log/auth.log | grep 'Invalid' | awk '{print $8}' | sort | uniq -c | sort -bn
 ```
 
 ## lastb
 
 显示登录失败的用户
-```
+```Bash
 lastb
 ```
 
 统计登录失败次数命令
-```
+```Bash
 lastb | awk '{ print $3}' | sort | uniq -c | sort -n
 ```
