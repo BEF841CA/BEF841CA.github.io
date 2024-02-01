@@ -22,14 +22,14 @@
 
     function extend_click() {
         clearTimeout(tocbot_timer);
-        tocbot_timer = setTimeout(function() {
+        tocbot_timer = setTimeout(function () {
             tocbot.refresh(obj_merge(tocbot_default_config, {
                 hasInnerContainers: true
             }));
         }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
     }
 
-    document.ready(function() {
+    document.ready(function () {
         tocbot.init(obj_merge(tocbot_default_config, {
             collapseDepth: 1
         }));

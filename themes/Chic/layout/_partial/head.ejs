@@ -17,43 +17,45 @@
 <%
 var title = page.title;
 
-if (is_archive()){
+if (is_archive()) {
     title = __('archive_a');
 
-    if (is_month()){
+    if (is_month()) {
         title += ': ' + page.year + '/' + page.month;
-    } else if (is_year()){
+    } else if (is_year()) {
         title += ': ' + page.year;
     }
-} else if (is_category()){
+} else if (is_category()) {
     title = __('category') + ': ' + page.category;
-} else if (is_tag()){
+} else if (is_tag()) {
     title = __('tag') + ': ' + page.tag;
 }
 %>
-<title><% if (title){ %><%= title %> | <% } %><%= config.title %></title>
+<title>
+    <% if (title){ %><%= title %> |
+    <% } %>
+    <%= config.title %></title>
 
 <%# favicon %>
 <% if (theme.favicon){ %>
     <link rel="icon" href="<%- url_for(theme.favicon) %>">
 <% } %>
-
 <%# css list %>
 <% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
     <!-- stylesheets list from _config.yml -->
     <% theme.stylesheets.forEach(url => { %>
-    <link rel="stylesheet" href="<%- url_for(url) %>">
+        <link rel="stylesheet" href="<%- url_for(url) %>">
     <% }); %>
 <% } %>
 <%# javascript list %>
 <% if (theme.scripts !== undefined && theme.scripts.length > 0) { %>
     <!-- scripts list from _config.yml -->
     <% theme.scripts.forEach(url => { %>
-    <script src="<%- url_for(url) %>"></script>
+        <script src="<%- url_for(url) %>"></script>
     <% }); %>
 <% } %>
 <%# mathjax support %>
-<% if(theme.mathjax.enable!==null&&theme.mathjax.enable===true){ %>
+<% if(theme.mathjax.enable !== null && theme.mathjax.enable === true){ %>
     <%# import mathjax method: global or demand %>
     <% if(theme.mathjax.import === 'global'){ %>
         <%- partial('_plugins/mathjax.ejs') %>

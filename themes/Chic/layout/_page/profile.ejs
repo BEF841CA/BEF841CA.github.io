@@ -11,10 +11,10 @@
                     <a class="link-item" title="<%- key %>" href="<%= theme.links[key] %>">
                         <% if(theme.links_text_enable) { %>
                             <%= key %>
-                        <%}%>
-                        <%if(theme.links_icon_enable){ %>
+                        <% } %>
+                        <% if(theme.links_icon_enable){ %>
                             <i class="iconfont icon-<%- key.toLowerCase() %>"></i>
-                        <%}%>
+                        <% } %>
                     </a>
                 <% } %>
             <% } %>
