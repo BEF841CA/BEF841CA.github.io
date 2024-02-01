@@ -402,9 +402,13 @@ input[type="radio"]:not(:checked) + label:after {
 .navbar .menu a:hover {
   background-color: transparent;
 }
+.navbar-header {
+  display: flex;
+  align-items: center;
+}
 .navbar-header .icon {
   font-size: 1.5em;
-  color: #f00;
+  color: #710408;
 }
 header label {
   margin-left: 15px;
