@@ -1,7 +1,10 @@
 <div class="container profile-container">
     <div class="intro">
-        <div class="avatar">
+        <div class="avatar" id="avatar-light">
             <a href="<%- url_for(theme.nav.Posts) %>"><img src="<%- url_for(theme.avatar) %>"></a>
+        </div>
+        <div class="avatar" id="avatar-dark">
+            <a href="<%- url_for(theme.nav.Posts) %>"><img src="<%- url_for(theme.avatar_dark) %>"></a>
         </div>
         <div class="nickname"><%- theme.nickname %></div>
         <div class="description"><%- markdown(theme.description) %></div>
