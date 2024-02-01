@@ -204,6 +204,13 @@ a:hover {
   text-decoration: none;
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
 }
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -348,9 +355,9 @@ input[type="radio"]:not(:checked) + label:after {
 /*}*/
 @font-face {
   font-family: "iconfont"; /* Project id 3374452 */
-  src: url('../fonts/iconfont/iconfont.woff2?t=1699861198265') format('woff2'),
-       url('../fonts/iconfont/iconfont.woff?t=1699861198265') format('woff'),
-       url('../fonts/iconfont/iconfont.ttf?t=1699861198265') format('truetype');
+  src: url('iconfont.woff2?t=1706781894561') format('woff2'),
+       url('iconfont.woff?t=1706781894561') format('woff'),
+       url('iconfont.ttf?t=1706781894561') format('truetype');
 }
 
 .iconfont {
@@ -359,6 +366,10 @@ input[type="radio"]:not(:checked) + label:after {
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tiance:before {
+  content: "\e620";
 }
 
 .icon-mail:before {
@@ -390,6 +401,10 @@ input[type="radio"]:not(:checked) + label:after {
 .navbar-header a:hover,
 .navbar .menu a:hover {
   background-color: transparent;
+}
+.navbar-header .icon {
+  font-size: 1.5em;
+  color: #f00;
 }
 header label {
   margin-left: 15px;
@@ -515,7 +530,7 @@ header label {
 .links a:hover {
   background-color: transparent;
 }
-.links .iconfont {
+.links .icon {
   font-size: 2em;
 }
 .post-wrap {
