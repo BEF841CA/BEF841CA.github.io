@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1617025",
+      "name": "天策",
+      "font_class": "tiance",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
       "icon_id": "1005713",
       "name": "mail",
       "font_class": "mail",

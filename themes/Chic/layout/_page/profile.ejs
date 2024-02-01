@@ -16,7 +16,9 @@
                             <%= key %>
                         <% } %>
                         <% if(theme.links_icon_enable){ %>
-                            <i class="iconfont icon-<%- key.toLowerCase() %>"></i>
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-<%- key.toLowerCase() %>"></use>
+                            </svg>
                         <% } %>
                     </a>
                 <% } %>
