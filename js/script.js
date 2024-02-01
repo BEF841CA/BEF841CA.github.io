@@ -28,21 +28,6 @@
     }
 })()
 
-var vs2015Link = document.createElement('link')
-var intellijLink = document.createElement('link')
-vs2015Link.setAttribute('rel', 'stylesheet')
-vs2015Link.setAttribute('type', 'text/css')
-vs2015Link.setAttribute(
-    'href',
-    'https://jsd.onmicrosoft.cn/gh/highlightjs/cdn-release@latest/build/styles/vs2015.min.css',
-)
-intellijLink.setAttribute('rel', 'stylesheet')
-intellijLink.setAttribute('type', 'text/css')
-intellijLink.setAttribute(
-    'href',
-    'https://jsd.onmicrosoft.cn/gh/highlightjs/cdn-release@latest/build/styles/intellij-light.min.css',
-)
-
 document.ready(
     // toggleTheme function.
     // this script shouldn't be changed.
@@ -58,14 +43,35 @@ document.ready(
         )
         const isDarkMode = darkModeMediaQuery.matches
 
+        const vs2015Link = document.createElement('link')
+        const intellijLink = document.createElement('link')
+        const avatarLight = document.getElementById('avatar-light')
+        const avatarDark = document.getElementById('avatar-dark')
+        const switchDefault = document.getElementById('switch_default')
+
+        vs2015Link.setAttribute('rel', 'stylesheet')
+        vs2015Link.setAttribute('type', 'text/css')
+        vs2015Link.setAttribute(
+            'href',
+            'https://jsd.onmicrosoft.cn/gh/highlightjs/cdn-release@latest/build/styles/vs2015.min.css',
+        )
+        intellijLink.setAttribute('rel', 'stylesheet')
+        intellijLink.setAttribute('type', 'text/css')
+        intellijLink.setAttribute(
+            'href',
+            'https://jsd.onmicrosoft.cn/gh/highlightjs/cdn-release@latest/build/styles/intellij-light.min.css',
+        )
+
         const dark = function () {
             pageBody.classList.add('dark-theme')
 
-            document.getElementById('avatar-light').style.display = 'none'
-            document.getElementById('avatar-dark').style.display = 'block'
+            if (avatarLight && avatarDark) {
+                avatarLight.style.display = 'none'
+                avatarDark.style.display = 'block'
+            }
 
             setTimeout(() => {
-                document.getElementById('switch_default').checked = true
+                switchDefault.checked = true
             })
 
             // code
@@ -82,11 +88,13 @@ document.ready(
         const light = function () {
             pageBody.classList.remove('dark-theme')
 
-            document.getElementById('avatar-light').style.display = 'block'
-            document.getElementById('avatar-dark').style.display = 'none'
+            if (avatarLight && avatarDark) {
+                avatarLight.style.display = 'block'
+                avatarDark.style.display = 'none'
+            }
 
             setTimeout(() => {
-                document.getElementById('switch_default').checked = false
+                switchDefault.checked = false
             })
 
             // code
