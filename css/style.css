@@ -406,6 +406,10 @@ input[type="radio"]:not(:checked) + label:after {
   display: flex;
   align-items: center;
 }
+.navbar-header > div:first-child {
+  display: flex;
+  align-items: center;
+}
 .navbar-header .icon {
   font-size: 1.5em;
   color: #710408;
