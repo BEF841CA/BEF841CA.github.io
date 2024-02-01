@@ -47,7 +47,7 @@ document.ready(
     // toggleTheme function.
     // this script shouldn't be changed.
     () => {
-        var _Blog = window._Blog || {}
+        const _Blog = window._Blog || {}
         // debugger
         // const currentTheme = window.localStorage && window.localStorage.getItem('theme');
         // const isDark = currentTheme === 'dark';
@@ -58,44 +58,58 @@ document.ready(
         )
         const isDarkMode = darkModeMediaQuery.matches
 
-        if (isDarkMode) {
+        const dark = function () {
             pageBody.classList.add('dark-theme')
-            document.getElementById('switch_default').checked = true
+
+            document.getElementById('avatar-light').style.display = 'none'
+            document.getElementById('avatar-dark').style.display = 'block'
+
+            setTimeout(() => {
+                document.getElementById('switch_default').checked = true
+            })
+
+            // code
+            document.head.appendChild(vs2015Link)
+
+            if (document.head.contains(intellijLink)) {
+                document.head.removeChild(intellijLink)
+            }
+
             // mobile
             mobileToggleTheme.innerText = '· Dark'
-            document.head.appendChild(vs2015Link)
-        } else {
+        }
+
+        const light = function () {
             pageBody.classList.remove('dark-theme')
-            document.getElementById('switch_default').checked = false
+
+            document.getElementById('avatar-light').style.display = 'block'
+            document.getElementById('avatar-dark').style.display = 'none'
+
+            setTimeout(() => {
+                document.getElementById('switch_default').checked = false
+            })
+
+            // code
+            if (document.head.contains(vs2015Link)) {
+                document.head.removeChild(vs2015Link)
+            }
+            document.head.appendChild(intellijLink)
+
             // mobile
             mobileToggleTheme.innerText = '· Light'
-            document.head.appendChild(intellijLink)
+        }
+
+        if (isDarkMode) {
+            dark()
+        } else {
+            light()
         }
 
         const darkModeChangeListener = () => {
-            // <link rel="stylesheet" href="https://jsd.onmicrosoft.cn/gh/highlightjs/cdn-release@latest/build/styles/vs2015.min.css">
-
             if (pageBody.classList.contains('dark-theme')) {
-                pageBody.classList.remove('dark-theme')
-                // mobile
-                mobileToggleTheme.innerText = '· Light'
-                setTimeout(() => {
-                    document.getElementById('switch_default').checked = false
-                })
-
-                document.head.removeChild(vs2015Link)
-                document.head.appendChild(intellijLink)
+                light()
             } else {
-                pageBody.classList.add('dark-theme')
-                // mobile
-                mobileToggleTheme.innerText = '· Dark'
-
-                setTimeout(() => {
-                    document.getElementById('switch_default').checked = true
-                })
-
-                document.head.removeChild(intellijLink)
-                document.head.appendChild(vs2015Link)
+                dark()
             }
         }
 
