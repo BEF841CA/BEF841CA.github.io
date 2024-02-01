@@ -1,7 +1,7 @@
 /* normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
   line-height: 1.15 /* 1 */;
-  -webkit-text-size-adjust: 100% /* 2 */;
+  -webkit-text-size-adjust: 100%;
 }
 body {
   margin: 0;
@@ -13,11 +13,11 @@ h1 {
 hr {
   box-sizing: content-box /* 1 */;
   height: 0 /* 1 */;
-  overflow: visible /* 2 */;
+  overflow: visible;
 }
 pre {
   font-family: monospace, monospace /* 1 */;
-  font-size: 1em /* 2 */;
+  font-size: 1em;
 }
 a {
   background-color: transparent;
@@ -25,7 +25,7 @@ a {
 abbr[title] {
   border-bottom: none /* 1 */;
   text-decoration: underline /* 2 */;
-  text-decoration: underline dotted /* 2 */;
+  text-decoration: underline dotted;
 }
 b,
 strong {
@@ -35,7 +35,7 @@ code,
 kbd,
 samp {
   font-family: monospace, monospace /* 1 */;
-  font-size: 1em /* 2 */;
+  font-size: 1em;
 }
 small {
   font-size: 80%;
@@ -64,7 +64,7 @@ textarea {
   font-family: inherit /* 1 */;
   font-size: 100% /* 1 */;
   line-height: 1.15 /* 1 */;
-  margin: 0 /* 2 */;
+  margin: 0;
 }
 button,
 input {
@@ -88,9 +88,9 @@ button::-moz-focus-inner,
   padding: 0;
 }
 button:-moz-focusring,
-[type="button"]-moz-focusring,
-[type="reset"]-moz-focusring,
-[type="submit"]-moz-focusring {
+[type="button"] -moz-focusring,
+[type="reset"] -moz-focusring,
+[type="submit"] -moz-focusring {
   outline: 1px dotted ButtonText;
 }
 fieldset {
@@ -102,7 +102,7 @@ legend {
   display: table /* 1 */;
   max-width: 100% /* 1 */;
   padding: 0 /* 3 */;
-  white-space: normal /* 1 */;
+  white-space: normal;
 }
 progress {
   vertical-align: baseline;
@@ -113,7 +113,7 @@ textarea {
 [type="checkbox"],
 [type="radio"] {
   box-sizing: border-box /* 1 */;
-  padding: 0 /* 2 */;
+  padding: 0;
 }
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
@@ -121,14 +121,14 @@ textarea {
 }
 [type="search"] {
   -webkit-appearance: textfield /* 1 */;
-  outline-offset: -2px /* 2 */;
+  outline-offset: -2px;
 }
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 ::-webkit-file-upload-button {
   -webkit-appearance: button /* 1 */;
-  font: inherit /* 2 */;
+  font: inherit;
 }
 details {
   display: block;
@@ -142,15 +142,8 @@ template {
 [hidden] {
   display: none;
 }
-@font-face {
-  font-family: 'lanting';
-  src: url("../fonts/lanting/lanting.eot"); /* IE9 */
-  src: url("../fonts/lanting/lanting.eot?#iefix") format('embedded-opentype'), /* IE6-IE8 */ url("../fonts/lanting/lanting.woff2") format('woff2'), url("../fonts/lanting/lanting.woff") format('woff'), url("../fonts/lanting/lanting.ttf") format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-  font-weight: 300;
-  font-display: swap;
-}
 html {
-  font-family: 'Microsoft Jhenghei', Lantinghei SC, 'lanting', PingFang SC, Seguo UI, Microsoft Yahei, Arial;
+  font-family: "LXGW WenKai Screen", sans-serif;
 }
 html::-webkit-scrollbar {
   width: 8px;
@@ -169,7 +162,7 @@ body {
   font-weight: normal;
   line-height: 2em;
   overflow: overlay;
-  background-color: #fff;
+  background-color: #f9f9f9;
   color: #161209;
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, opacity 0.2s ease;
 }
@@ -256,47 +249,55 @@ a:hover {
 @charset "utf-8";
 
 /*input css begin*/
-*{
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
 /* input[type="checkbox"],input[type="radio"]{
     display: none;
     width: 0;
     height: 0;
     visibility: hidden;
 } */
-input[type="checkbox"]:checked + label:after{
+input[type="checkbox"]:checked + label:after {
     transition: all 0.3s ease-in;
 }
+
 input[type="checkbox"]:not(:checked) + label:after {
     transition: all 0.3s ease-out;
 }
+
 input[type="checkbox"]:checked + label,
-input[type="checkbox"]:not(:checked) + label{
+input[type="checkbox"]:not(:checked) + label {
     transition: all 0.3s ease-in-out;
 }
-input[type="checkbox"]:checked + label:before,input[type="checkbox"]:checked + label i:before,input[type="checkbox"]:not(:checked) + label i:before,
-input[type="checkbox"]:checked + label i:after,input[type="checkbox"]:not(:checked) + label i:after,input[type="checkbox"]:not(:checked) + label:before{
+
+input[type="checkbox"]:checked + label:before, input[type="checkbox"]:checked + label i:before, input[type="checkbox"]:not(:checked) + label i:before,
+input[type="checkbox"]:checked + label i:after, input[type="checkbox"]:not(:checked) + label i:after, input[type="checkbox"]:not(:checked) + label:before {
     transition: all 0.3s ease-in-out;
 }
+
 input[type="radio"]:checked + label:after,
 input[type="radio"]:not(:checked) + label:after {
     transition: all 0.3s ease-in-out;
 }
-.switch_default[type="checkbox"]{
+
+.switch_default[type="checkbox"] {
     display: none;
 }
-.switch_default + label{
-     background-color: #e6e6e6;
-     border-radius:7px;
-     cursor: pointer;
-     display: inline-block;
-     height: 14px;
-     position: relative;
-     box-shadow: 0.2px 0.2px 1px 0.5px rgb(180,180,180);
-     width: 30px;
- }
-.switch_default + label:after{
+
+.switch_default + label {
+    background-color: #e6e6e6;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-block;
+    height: 14px;
+    position: relative;
+    box-shadow: 0.2px 0.2px 1px 0.5px rgb(180, 180, 180);
+    width: 30px;
+}
+
+.switch_default + label:after {
     background-color: #fff;
     border-radius: 50%;
     content: "";
@@ -305,13 +306,15 @@ input[type="radio"]:not(:checked) + label:after {
     position: absolute;
     top: .5px;
     width: 12px;
-    box-shadow: 0.2px 0.2px 1px 0.5px rgb(180,180,180);
+    box-shadow: 0.2px 0.2px 1px 0.5px rgb(180, 180, 180);
 }
-.switch_default:checked + label{
+
+.switch_default:checked + label {
     background-color: #1ABC9C;
-    box-shadow:none;
+    box-shadow: none;
 }
-.switch_default:checked + label:after{
+
+.switch_default:checked + label:after {
     left: 17px;
 }
 
@@ -820,6 +823,16 @@ header label {
   border-top: 1px solid #909196;
   border-bottom: 1px solid #909196;
 }
+.post-content code,
+.post-content pre {
+  line-height: 1.7em;
+  padding: 7px;
+  font-size: 13px;
+  font-family: Consolas, Monaco, Menlo, Consolas, monospace;
+}
+.post-content code {
+  border-radius: 20px;
+}
 .post-tags {
   padding: 1rem 0 1rem;
   display: flex;
@@ -933,7 +946,7 @@ header label {
     padding: 0;
     margin: 0;
     line-height: 5.5em;
-    background: #fff;
+    background: #f9f9f9;
   }
   .navbar-mobile .container .navbar-header {
     display: flex;
