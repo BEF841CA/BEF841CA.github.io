@@ -205,43 +205,43 @@
         </header>
 
         <div class="post-content">
-            <h1 id="watchtower"><a href="#watchtower" class="headerlink" title="watchtower"></a><a target="_blank" rel="noopener" href="https://containrrr.dev/watchtower">watchtower</a></h1><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><pre><code>docker run -d -e TZ=Asia/Shanghai --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --schedule  &quot;0 0 5 * * *&quot;
+            <h1 id="watchtower"><a href="#watchtower" class="headerlink" title="watchtower"></a><a target="_blank" rel="noopener" href="https://containrrr.dev/watchtower">watchtower</a></h1><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><pre><code class="Bash">docker run -d -e TZ=Asia/Shanghai --name watchtower -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --cleanup --schedule  &quot;0 0 5 * * *&quot;
 </code></pre>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="时区"><a href="#时区" class="headerlink" title="时区"></a>时区</h3><pre><code>            Argument: N/A
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="时区"><a href="#时区" class="headerlink" title="时区"></a>时区</h3><pre><code class="plaintext">            Argument: N/A
 Environment Variable: TZ
                 Type: String
              Default: &quot;UTC&quot;
 </code></pre>
-<h3 id="自动清理"><a href="#自动清理" class="headerlink" title="自动清理"></a>自动清理</h3><pre><code>            Argument: --cleanup
+<h3 id="自动清理"><a href="#自动清理" class="headerlink" title="自动清理"></a>自动清理</h3><pre><code class="plaintext">            Argument: --cleanup
 Environment Variable: WATCHTOWER_CLEANUP
                 Type: Boolean
              Default: false
 </code></pre>
-<h3 id="删除匿名卷"><a href="#删除匿名卷" class="headerlink" title="删除匿名卷"></a>删除匿名卷</h3><pre><code>            Argument: --cleanup
+<h3 id="删除匿名卷"><a href="#删除匿名卷" class="headerlink" title="删除匿名卷"></a>删除匿名卷</h3><pre><code class="plaintext">            Argument: --cleanup
 Environment Variable: WATCHTOWER_CLEANUP
                 Type: Boolean
              Default: false
 </code></pre>
-<h3 id="轮询间隔"><a href="#轮询间隔" class="headerlink" title="轮询间隔"></a>轮询间隔</h3><pre><code>            Argument: --interval, -i
+<h3 id="轮询间隔"><a href="#轮询间隔" class="headerlink" title="轮询间隔"></a>轮询间隔</h3><pre><code class="plaintext">            Argument: --interval, -i
 Environment Variable: WATCHTOWER_POLL_INTERVAL
                 Type: Integer
              Default: 86400 (24 hours)
 </code></pre>
-<h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><h3 id="通知日志级别"><a href="#通知日志级别" class="headerlink" title="通知日志级别"></a>通知日志级别</h3><pre><code>            Argument: --notifications-level
+<h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><h3 id="通知日志级别"><a href="#通知日志级别" class="headerlink" title="通知日志级别"></a>通知日志级别</h3><pre><code class="plaintext">            Argument: --notifications-level
 Environment Variable: WATCHTOWER_NOTIFICATIONS_LEVEL
                 Type: String
              Default: info (panic, fatal, error, warn, info, debug, trace)
 </code></pre>
-<h3 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h3><pre><code>            Argument: --notifications-hostname
+<h3 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h3><pre><code class="plaintext">            Argument: --notifications-hostname
 Environment Variable: WATCHTOWER_NOTIFICATIONS_HOSTNAME
                 Type: String
 </code></pre>
-<h3 id="标题前缀"><a href="#标题前缀" class="headerlink" title="标题前缀"></a>标题前缀</h3><pre><code>            Argument: --notification-title-tag
+<h3 id="标题前缀"><a href="#标题前缀" class="headerlink" title="标题前缀"></a>标题前缀</h3><pre><code class="plaintext">            Argument: --notification-title-tag
 Environment Variable: WATCHTOWER_NOTIFICATION_TITLE_TAG
                 Type: String
 </code></pre>
 <h3 id="通知url"><a href="#通知url" class="headerlink" title="通知url"></a>通知url</h3><p>使用<a target="_blank" rel="noopener" href="https://containrrr.dev/shoutrrr/">shoutrrr</a>发送通知</p>
-<pre><code>            Argument: --notification-url
+<pre><code class="plaintext">            Argument: --notification-url
 Environment Variable: WATCHTOWER_NOTIFICATION_URL
                 Type: String
                 E.g.: smtp://username:password@host:port/?from=fromAddress&amp;to=recipient1[,recipient2,...]

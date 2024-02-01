@@ -205,7 +205,7 @@
         </header>
 
         <div class="post-content">
-            <h2 id="自动部署sh脚本文件"><a href="#自动部署sh脚本文件" class="headerlink" title="自动部署sh脚本文件"></a>自动部署sh脚本文件</h2><pre><code class="language">#!/bin/bash
+            <h2 id="自动部署sh脚本文件"><a href="#自动部署sh脚本文件" class="headerlink" title="自动部署sh脚本文件"></a>自动部署sh脚本文件</h2><pre><code class="Bash">#!/bin/bash
 
 export JAVA_HOME=/usr/java/jdk1.8.0_241-amd64
 export PATH=$&#123;JAVA_HOME&#125;/bin:$&#123;PATH&#125;
@@ -280,9 +280,9 @@ usage
 ;;
 esac
 </code></pre>
-<h2 id="创建服务"><a href="#创建服务" class="headerlink" title="创建服务"></a>创建服务</h2><h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><pre><code class="Bash">/etc/systemd/system
+<h2 id="创建服务"><a href="#创建服务" class="headerlink" title="创建服务"></a>创建服务</h2><h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><pre><code class="plaintext">/etc/systemd/system
 </code></pre>
-<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><pre><code class="Bash">[Unit]
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><pre><code class="plaintext">[Unit]
 Description=Springboot project for test auto start
 After=syslog.target network.target nss-lookup.target
  

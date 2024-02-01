@@ -206,17 +206,17 @@
 
         <div class="post-content">
             <h2 id="选择合适版本"><a href="#选择合适版本" class="headerlink" title="选择合适版本"></a>选择合适版本</h2><p><em>根据Kubernetes版本选择对应版本 可去<a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard/releases">github releases页面</a>查看</em></p>
-<h3 id="查看Kubernetes版本"><a href="#查看Kubernetes版本" class="headerlink" title="查看Kubernetes版本"></a>查看Kubernetes版本</h3><pre><code>kubectl version
+<h3 id="查看Kubernetes版本"><a href="#查看Kubernetes版本" class="headerlink" title="查看Kubernetes版本"></a>查看Kubernetes版本</h3><pre><code class="Bash">kubectl version
 </code></pre>
 <h2 id="构建-Pod"><a href="#构建-Pod" class="headerlink" title="构建 Pod"></a>构建 Pod</h2><p>具体命令可以查看 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard/releases">github releases页面</a> Installation</p>
-<h2 id="查看-Pod-状态"><a href="#查看-Pod-状态" class="headerlink" title="查看 Pod 状态"></a>查看 Pod 状态</h2><pre><code>kubectl get pods --all-namespaces | grep dashboard
+<h2 id="查看-Pod-状态"><a href="#查看-Pod-状态" class="headerlink" title="查看 Pod 状态"></a>查看 Pod 状态</h2><pre><code class="Bash">kubectl get pods --all-namespaces | grep dashboard
 </code></pre>
 <h2 id="重新创建-dashboard-服务"><a href="#重新创建-dashboard-服务" class="headerlink" title="重新创建 dashboard 服务"></a>重新创建 dashboard 服务</h2><p><em>删除现有的 dashboard 服务，dashboard 服务的 namespace 是 kubernetes-dashboard，但是该服务的类型是ClusterIP，不便于我们通过浏览器访问，因此需要改成 NodePort 类型的</em></p>
-<h3 id="查看类型"><a href="#查看类型" class="headerlink" title="查看类型"></a>查看类型</h3><pre><code>kubectl get svc --all-namespaces
+<h3 id="查看类型"><a href="#查看类型" class="headerlink" title="查看类型"></a>查看类型</h3><pre><code class="Bash">kubectl get svc --all-namespaces
 </code></pre>
-<h3 id="删除-dashboard-服务"><a href="#删除-dashboard-服务" class="headerlink" title="删除 dashboard 服务"></a>删除 dashboard 服务</h3><pre><code>kubectl delete service kubernetes-dashboard --namespace=kubernetes-dashboard
+<h3 id="删除-dashboard-服务"><a href="#删除-dashboard-服务" class="headerlink" title="删除 dashboard 服务"></a>删除 dashboard 服务</h3><pre><code class="Bash">kubectl delete service kubernetes-dashboard --namespace=kubernetes-dashboard
 </code></pre>
-<h3 id="创建配置文件dashboard-svc-yaml"><a href="#创建配置文件dashboard-svc-yaml" class="headerlink" title="创建配置文件dashboard-svc.yaml"></a>创建配置文件dashboard-svc.yaml</h3><pre><code>cat &gt; dashboard-svc.yaml &lt;&lt;-EOF
+<h3 id="创建配置文件dashboard-svc-yaml"><a href="#创建配置文件dashboard-svc-yaml" class="headerlink" title="创建配置文件dashboard-svc.yaml"></a>创建配置文件dashboard-svc.yaml</h3><pre><code class="Bash">cat &gt; dashboard-svc.yaml &lt;&lt;-EOF
 kind: Service
 apiVersion: v1
 metadata:
@@ -233,9 +233,9 @@ spec:
     k8s-app: kubernetes-dashboard
 EOF
 </code></pre>
-<h3 id="创建服务"><a href="#创建服务" class="headerlink" title="创建服务"></a>创建服务</h3><pre><code>kubectl apply -f dashboard-svc.yaml
+<h3 id="创建服务"><a href="#创建服务" class="headerlink" title="创建服务"></a>创建服务</h3><pre><code class="Bash">kubectl apply -f dashboard-svc.yaml
 </code></pre>
-<h2 id="创建管理员角色"><a href="#创建管理员角色" class="headerlink" title="创建管理员角色"></a>创建管理员角色</h2><h3 id="创建配置文件dashboard-svc-account-yaml"><a href="#创建配置文件dashboard-svc-account-yaml" class="headerlink" title="创建配置文件dashboard-svc-account.yaml"></a>创建配置文件dashboard-svc-account.yaml</h3><pre><code>cat &gt; dashboard-svc-account.yaml &lt;&lt;-EOF
+<h2 id="创建管理员角色"><a href="#创建管理员角色" class="headerlink" title="创建管理员角色"></a>创建管理员角色</h2><h3 id="创建配置文件dashboard-svc-account-yaml"><a href="#创建配置文件dashboard-svc-account-yaml" class="headerlink" title="创建配置文件dashboard-svc-account.yaml"></a>创建配置文件dashboard-svc-account.yaml</h3><pre><code class="Bash">cat &gt; dashboard-svc-account.yaml &lt;&lt;-EOF
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -256,14 +256,14 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 EOF
 </code></pre>
-<h3 id="创建角色"><a href="#创建角色" class="headerlink" title="创建角色"></a>创建角色</h3><pre><code>kubectl apply -f dashboard-svc-account.yaml 
+<h3 id="创建角色"><a href="#创建角色" class="headerlink" title="创建角色"></a>创建角色</h3><pre><code class="Bash">kubectl apply -f dashboard-svc-account.yaml 
 </code></pre>
-<h3 id="获取token"><a href="#获取token" class="headerlink" title="获取token"></a>获取token</h3><pre><code># 查看账号
+<h3 id="获取token"><a href="#获取token" class="headerlink" title="获取token"></a>获取token</h3><pre><code class="Bash"># 查看账号
 kubectl get secret -n kube-system |grep admin|awk &#39;&#123;print $1&#125;&#39;
 # 获取token
 kubectl describe secret dashboard-admin-token-xxxxx(上面获取的账号) -n kube-system|grep &#39;^token&#39;|awk &#39;&#123;print $2&#125;&#39;
 </code></pre>
-<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><h3 id="查看访问端口"><a href="#查看访问端口" class="headerlink" title="查看访问端口"></a>查看访问端口</h3><pre><code>kubectl get svc --all-namespaces | grep dashboard
+<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><h3 id="查看访问端口"><a href="#查看访问端口" class="headerlink" title="查看访问端口"></a>查看访问端口</h3><pre><code class="Bash">kubectl get svc --all-namespaces | grep dashboard
 </code></pre>
 
         </div>

@@ -833,6 +833,9 @@ header label {
 .post-content code {
   border-radius: 20px;
 }
+.post-content code::-webkit-scrollbar {
+  display: none;
+}
 .post-tags {
   padding: 1rem 0 1rem;
   display: flex;

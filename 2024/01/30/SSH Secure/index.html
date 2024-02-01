@@ -199,19 +199,19 @@
 
         <div class="post-content">
             <h1 id="登录信息"><a href="#登录信息" class="headerlink" title="登录信息"></a>登录信息</h1><h2 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h2><p>查看登录日志</p>
-<pre><code>cat /var/log/auth.log
+<pre><code class="Bash">cat /var/log/auth.log
 </code></pre>
 <p>查看尝试登录IP和尝试登录的用户名</p>
-<pre><code>cat /var/log/auth.log | grep &#39;Invalid&#39; | awk &#39;&#123;print $10 &quot;\t&quot; $8&#125;&#39; | sort
+<pre><code class="Bash">cat /var/log/auth.log | grep &#39;Invalid&#39; | awk &#39;&#123;print $10 &quot;\t&quot; $8&#125;&#39; | sort
 </code></pre>
 <p>查看尝试登录用户名次数统计</p>
-<pre><code>cat /var/log/auth.log | grep &#39;Invalid&#39; | awk &#39;&#123;print $8&#125;&#39; | sort | uniq -c | sort -bn
+<pre><code class="Bash">cat /var/log/auth.log | grep &#39;Invalid&#39; | awk &#39;&#123;print $8&#125;&#39; | sort | uniq -c | sort -bn
 </code></pre>
 <h2 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h2><p>显示登录失败的用户</p>
-<pre><code>lastb
+<pre><code class="Bash">lastb
 </code></pre>
 <p>统计登录失败次数命令</p>
-<pre><code>lastb | awk &#39;&#123; print $3&#125;&#39; | sort | uniq -c | sort -n
+<pre><code class="Bash">lastb | awk &#39;&#123; print $3&#125;&#39; | sort | uniq -c | sort -n
 </code></pre>
 
         </div>
