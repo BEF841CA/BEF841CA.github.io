@@ -206,7 +206,7 @@
         </header>
 
         <div class="post-content">
-            <h1 id="登录信息"><a href="#登录信息" class="headerlink" title="登录信息"></a>登录信息</h1><h2 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h2><p>查看登录日志</p>
+            <h1 id="查看登录信息"><a href="#查看登录信息" class="headerlink" title="查看登录信息"></a>查看登录信息</h1><h2 id="Log"><a href="#Log" class="headerlink" title="Log"></a>Log</h2><p>查看登录日志</p>
 <pre><code class="Bash">cat /var/log/auth.log
 </code></pre>
 <p>查看尝试登录IP和尝试登录的用户名</p>
@@ -215,12 +215,13 @@
 <p>查看尝试登录用户名次数统计</p>
 <pre><code class="Bash">cat /var/log/auth.log | grep &#39;Invalid&#39; | awk &#39;&#123;print $8&#125;&#39; | sort | uniq -c | sort -bn
 </code></pre>
-<h2 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h2><p>显示登录失败的用户</p>
+<h3 id="lastb"><a href="#lastb" class="headerlink" title="lastb"></a>lastb</h3><p>显示登录失败的用户</p>
 <pre><code class="Bash">lastb
 </code></pre>
 <p>统计登录失败次数命令</p>
 <pre><code class="Bash">lastb | awk &#39;&#123; print $3&#125;&#39; | sort | uniq -c | sort -n
 </code></pre>
+<h1 id="防护"><a href="#防护" class="headerlink" title="防护"></a>防护</h1><h2 id="Fail2Ban"><a href="#Fail2Ban" class="headerlink" title="Fail2Ban"></a><a target="_blank" rel="noopener" href="https://github.com/fail2ban/fail2ban">Fail2Ban</a></h2><p>Fail2Ban扫描诸如<code>/var/log/auth.log</code>之类的日志文件，并禁止IP地址进行过多失败的登录尝试。它通过更新系统防火墙规则来实现这一点，以在可配置的时间内拒绝来自这些IP地址的新连接。Fail2Ban开箱即用，可以读取许多标准日志文件，例如sshd和Apache的日志文件，并且可以轻松地配置为读取您选择的任何日志文件，以应对您想要的任何错误。</p>
 
         </div>
 
