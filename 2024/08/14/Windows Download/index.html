@@ -47,7 +47,7 @@
 
     <link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css"/>
     <link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/tocbot@4.25.0/dist/tocbot.min.css">
-<meta name="generator" content="Hexo 7.2.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 <body>
 <div class="wrapper">
     <header>
@@ -197,7 +197,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">August 13, 2021&nbsp;&nbsp;10:12:31</a>
+                        Date: <a href="#">August 14, 2024&nbsp;&nbsp;10:12:31</a>
                         </span>
                     
                     
@@ -213,7 +213,23 @@
         </header>
 
         <div class="post-content">
-            <h2 id="Windows-Microsoft-下载地址"><a href="#Windows-Microsoft-下载地址" class="headerlink" title="Windows Microsoft 下载地址"></a><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/software-download/">Windows Microsoft 下载地址</a></h2><h2 id="Windows-Server-Microsoft-下载地址"><a href="#Windows-Server-Microsoft-下载地址" class="headerlink" title="Windows Server Microsoft 下载地址"></a><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/evalcenter/evaluate-windows-server">Windows Server Microsoft 下载地址</a></h2><h2 id="MSDN-下载地址"><a href="#MSDN-下载地址" class="headerlink" title="MSDN 下载地址"></a><a target="_blank" rel="noopener" href="https://next.itellyou.cn/">MSDN 下载地址</a></h2>
+            <h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p> <a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/software-download/">Windows Microsoft</a>  </p>
+<pre><code>https://www.microsoft.com/zh-cn/software-download/
+</code></pre>
+<p> <a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/windows-server">Windows Server Microsoft</a></p>
+<pre><code>https://www.microsoft.com/zh-cn/windows-server
+</code></pre>
+<p> <a target="_blank" rel="noopener" href="https://next.itellyou.cn/">MSDN</a></p>
+<pre><code>https://next.itellyou.cn/
+</code></pre>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="安装跳过检查"><a href="#安装跳过检查" class="headerlink" title="安装跳过检查"></a>安装跳过检查</h2><ul>
+<li>按<code>SHIFT+F10</code> 打开控制台</li>
+<li>输入<code>regedit</code>，打开注册表管理器</li>
+<li>选择到 <code>HKEY_LOCAL_MACHINE\SYSTEM\Setup</code>，右键 <code>New &gt; Key</code>，增加 <code>LabConfig</code>。</li>
+<li>选择<code>LabConfig</code>，右键 <code>New \&gt; DWORD (32 bit) Value</code>，增加三个项目 <code>BypassRAMCheck</code> <code>BypassSecureBootCheck</code> <code>BypassTPMCheck</code>，值都设置为 1。</li>
+<li>回退，正常安装。</li>
+</ul>
+
         </div>
 
         <section class="post-tags">
@@ -237,10 +253,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/08/13/Redis%20Command/">Redis Command</a>
             
-            
-                <a class="next" rel="next" href="/2021/05/27/Auto%20Deploy%20jar/">自动部署jar包sh工具</a>
+                <a class="next" rel="next" href="/2024/01/30/SSH%20Secure/">SSH 安全</a>
             
         </section>
 
