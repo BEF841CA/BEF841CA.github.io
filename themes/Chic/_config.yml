@@ -6,7 +6,7 @@ nav:
   Posts: /archives
   Categories: /category
   Tags: /tag
-  About: /about
+  About: https://github.com/BEF841CA
 
 # favicon
 favicon: /favicon.ico
