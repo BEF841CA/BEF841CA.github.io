@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="<%= config.language %>">
+
+<head>
+    <%- partial('_partial/head', {cache: true}) %>
+    <link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css"/>
+    <link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/tocbot@4.25.0/dist/tocbot.min.css">
+</head>
+<body>
+<div class="wrapper">
+    <%- partial('_partial/header', {cache: true}) %>
+    <div class="main">
+        <%- body %>
+    </div>
+    <%- partial('_partial/footer', {cache: true}) %>
+</div>
+<script src="https://jsd.onmicrosoft.cn/npm/tocbot@4.25.0/dist/tocbot.min.js"></script>
+<script src="https://jsd.onmicrosoft.cn/gh/highlightjs/cdn-release@latest/build/highlight.min.js"></script>
+<script src="/fonts/iconfont/iconfont.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+
+</html>
