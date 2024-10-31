@@ -1,22 +1,22 @@
-name: Deploy
+name: Pages
 
 on:
   push:
     branches:
-      - main # default branch
+      - main
 
 jobs:
-  pages:
+  build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      actions: write
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js 16.9.1
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: recursive
+      - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
-          node-version: "16"
+          node-version: "20"
       - name: Cache NPM dependencies
         uses: actions/cache@v4
         with:
@@ -28,16 +28,22 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Build
+        run: npm run build
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          cname: bruce.red
-      - name: Delete workflow runs
-        uses: Mattraks/delete-workflow-runs@v2
-        with:
-          token: ${{ github.token }}
-          repository: ${{ github.repository }}
-          retain_days: 30
-          keep_minimum_runs: 6
+          path: ./public
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
