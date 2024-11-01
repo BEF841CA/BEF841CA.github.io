@@ -19,9 +19,16 @@ CREATE ROLE data_editor;
 CREATE ROLE data_admin;
  
 -- 将权限分配给角色
+-- 读写的权限
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO data_viewer;
+-- 写入的权限
 GRANT INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO data_editor;
+-- 所有表的权限
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO data_admin;
+-- 数据库的权限
+GRANT ALL ON database xxx TO data_admin;
+-- 模式的权限
+GRANT ALL ON schema public TO data_admin;
 
 --- 创建用户
 CREATE USER user WITH PASSWORD 'password';
