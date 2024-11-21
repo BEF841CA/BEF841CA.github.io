@@ -53,6 +53,14 @@ Environment Variable: WATCHTOWER_SCHEDULE
              Default: -
 ```
 
+### 运行一次
+```plaintext
+            Argument: --run-once, -R
+Environment Variable: WATCHTOWER_RUN_ONCE
+                Type: Boolean
+             Default: false
+```
+
 ## 通知
 
 ### 通知日志级别
