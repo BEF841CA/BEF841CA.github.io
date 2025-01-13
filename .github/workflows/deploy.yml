@@ -38,6 +38,8 @@ jobs:
   deploy:
     needs: build
     permissions:
+      actions: write
+      contents: read
       pages: write
       id-token: write
     environment:
