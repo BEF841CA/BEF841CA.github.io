@@ -30,16 +30,38 @@ docker pull docker.elastic.co/elasticsearch/elasticsearch:8.17.3
 
 ### 初始化运行 Elasticsearch 容器
 ```Bash
-docker run --name elasticsearch -m 8GB -d docker.elastic.co/elasticsearch/elasticsearch:8.17.3
+docker run --name elasticsearch -m 8GB -it docker.elastic.co/elasticsearch/elasticsearch:8.17.3
 ```
 
 ### 查看 elastic 用户密码和 Kibana 的注册令牌
 ```Bash
-docker logs elasticsearch
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Elasticsearch security features have been automatically configured!
+✅ Authentication is enabled and cluster connections are encrypted.
+
+ℹ️  Password for the elastic user (reset with `bin/elasticsearch-reset-password -u elastic`):
+  3RuV+2q0b3cWH9jQq4WP
+
+ℹ️  HTTP CA certificate SHA-256 fingerprint:
+  a8206297696a4c960221f1085dc7a45ef70651939483fb8d49a0ddd4912afbc7
+
+ℹ️  Configure Kibana to use this cluster:
+• Run Kibana and click the configuration link in the terminal when Kibana starts.
+• Copy the following enrollment token and paste it into Kibana in your browser (valid for the next 30 minutes):
+  eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTcyLjE3LjAuMzo5MjAwIl0sImZnciI6ImE4MjA2Mjk3Njk2YTRjOTYwMjIxZjEwODVkYzdhNDVlZjcwNjUxOTM5NDgzZmI4ZDQ5YTBkZGQ0OTEyYWZiYzciLCJrZXkiOiJwVUZqanBVQlJCUHozMEZPc0lVZzphU2lLUmhVOVJ5YUxmV3pKXzY0Vm13In0=
+
+ℹ️ Configure other nodes to join this cluster:
+• Copy the following enrollment token and start new Elasticsearch nodes with `bin/elasticsearch --enrollment-token <token>` (valid for the next 30 minutes):
+  eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTcyLjE3LjAuMzo5MjAwIl0sImZnciI6ImE4MjA2Mjk3Njk2YTRjOTYwMjIxZjEwODVkYzdhNDVlZjcwNjUxOTM5NDgzZmI4ZDQ5YTBkZGQ0OTEyYWZiYzciLCJrZXkiOiJwa0ZqanBVQlJCUHozMEZPc0lVZzpURzR1OW1SU1J0Q01scW9ncUVUM3lBIn0=
+
+  If you're running in Docker, copy the enrollment token and run:
+  `docker run -e "ENROLLMENT_TOKEN=<token>" docker.elastic.co/elasticsearch/elasticsearch:8.17.3`
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 ### 持久化配置
 ```Bash
+mkdir -p /opt/elasticsearch
 docker cp elasticsearch:/usr/share/elasticsearch/config /opt/elasticsearch
 docker cp elasticsearch:/usr/share/elasticsearch/data /opt/elasticsearch
 ```
@@ -67,6 +89,7 @@ docker run --name kibana -d docker.elastic.co/kibana/kibana:8.17.3
 
 ### 持久化配置
 ```Bash
+mkdir -p /opt/kibana
 docker cp kibana:/usr/share/kibana/config /opt/kibana
 docker cp kibana:/usr/share/kibana/data /opt/kibana
 ```
