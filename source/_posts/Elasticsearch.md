@@ -112,12 +112,11 @@ docker pull docker.elastic.co/elastic-agent/elastic-agent:8.17.3
 
 ### 启动 Elastic Agent 容器
 ```Bash
-docker run --name elastic-agent \
-  -v /opt/elasticsearch/config/certs:/usr/share/elasticsearch/config/certs \
+docker run --name elastic-agent --hostname $HOSTNAME\
   -e FLEET_SERVER_ENABLE=true \
   -e FLEET_SERVER_ELASTICSEARCH_HOST=<elasticsearch-host> \
   -e FLEET_SERVER_SERVICE_TOKEN=<service-token> \
   -e FLEET_SERVER_POLICY_ID=<fleet-server-policy> \
-  -e FLEET_SERVER_ELASTICSEARCH_CA=/usr/share/elasticsearch/config/certs/http_ca.crt \
+  -e FLEET_SERVER_ELASTICSEARCH_CA_TRUSTED_FINGERPRINT=<fingerprint)> \
   -p 8220:8220 -it -d docker.elastic.co/elastic-agent/elastic-agent:8.17.3
 ```
