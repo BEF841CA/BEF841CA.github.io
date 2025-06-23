@@ -24,6 +24,6 @@
     "hexo-theme-landscape": "^1.0.0"
   },
   "devDependencies": {
-    "prettier": "3.5.3"
+    "prettier": "3.6.0"
   }
 }
