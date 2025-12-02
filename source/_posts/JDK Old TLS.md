@@ -1,5 +1,5 @@
 ---
-title: JDK 开始 TLS 1.0 和 TLS 1.1
+title: JDK 开启 TLS 1.0 和 TLS 1.1
 date: 2025-12-02 11:02:00
 tags: [ JAVA, JDK ]
 category: JAVA
