@@ -1,7 +1,7 @@
 ---
 title: PostgreSQL
 date: 2024-10-28 16:44:53
-tags: [DB, PostgreSQL]
+tags: [ DB, PostgreSQL ]
 category: PostgreSQL
 ---
 

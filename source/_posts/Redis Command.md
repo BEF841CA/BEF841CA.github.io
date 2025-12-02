@@ -1,7 +1,7 @@
 ---
 title: Redis Command 
 date: 2021-08-13 10:27:09
-tags: [Redis]
+tags: [ Redis ]
 category: Deploy
 ---
 

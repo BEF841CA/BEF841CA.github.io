@@ -1,7 +1,7 @@
 ---
 title: Github Config
 date: 2023-08-16 17:01:32
-tags: [Github]
+tags: [ Github ]
 category: Github
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: Docker 容器创建
 date: 2023-11-22 10:18:32
-tags: [Docker]
-category: 
+tags: [ Docker ]
+category: Docker
 ---
 
 ## Nginx

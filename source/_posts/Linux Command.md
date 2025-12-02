@@ -1,7 +1,7 @@
 ---
 title: Linux Command
 date: 2021-05-10 11:34:30
-tags: [Linux]
+tags: [ Linux ]
 category: Deploy
 ---
 

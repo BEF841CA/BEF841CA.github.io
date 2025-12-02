@@ -1,7 +1,7 @@
 ---
 title: Windows Download
 date: 2024-08-14 10:12:31
-tags: [Windows, OS]
+tags: [ Windows, OS ]
 category: Windows
 ---
 

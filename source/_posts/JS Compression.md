@@ -1,7 +1,7 @@
 ---
 title: JS 压缩工具
 date: 2021-05-21 16:06:40
-tags: [Node]
+tags: [ Node ]
 category: Deploy
 ---
 

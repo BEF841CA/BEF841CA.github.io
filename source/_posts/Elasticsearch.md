@@ -1,7 +1,7 @@
 ---
 title: Elasticsearch
 date: 2025-03-11 17:00:00
-tags: [Docker, Elasticsearch]
+tags: [ Docker, Elasticsearch ]
 category: Elasticsearch
 ---
 

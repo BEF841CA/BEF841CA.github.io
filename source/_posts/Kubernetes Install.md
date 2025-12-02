@@ -1,7 +1,7 @@
 ---
-title: Kubernetes install 
+title: Kubernetes install
 date: 2022-03-22 15:04:03
-tags: [Kubernetes]
+tags: [ Kubernetes ]
 category: Kubernetes
 ---
 ## 部署方式介绍

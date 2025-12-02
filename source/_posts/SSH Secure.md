@@ -1,7 +1,7 @@
 ---
 title: SSH 安全
 date: 2024-01-30 14:37:00
-tags: [Linux, SSH]
+tags: [ Linux, SSH ]
 category:
 ---
 

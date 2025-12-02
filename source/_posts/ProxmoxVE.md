@@ -1,7 +1,7 @@
 ---
 title: ProxmoxVE Config
 date: 2021-10-09 15:46:10
-tags: [Proxmox]
+tags: [ Proxmox ]
 category: Proxmox
 ---
 ## PVE7.0国内源 ProxmoxVE
