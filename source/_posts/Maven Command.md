@@ -1,7 +1,7 @@
 ---
 title: nvm Command
 date: 2021-04-02 17:23:06
-tags: [ Node ]
+tags: [ JAVA, Command ]
 category: Develop
 ---
 

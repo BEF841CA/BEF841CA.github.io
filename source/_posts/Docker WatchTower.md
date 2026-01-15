@@ -1,7 +1,7 @@
 ---
 title: 自动更新 Docker 容器
 date: 2024-01-15 21:13:49
-tags: [ Docker ]
+tags: [ Docker, Container ]
 category: Docker
 ---
 

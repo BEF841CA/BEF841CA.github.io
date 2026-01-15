@@ -1,7 +1,7 @@
 ---
 title: systemctl Command
 date: 2021-05-25 17:43:32
-tags: [ Linux ]
+tags: [ Linux, Command ]
 category: Develop
 ---
 

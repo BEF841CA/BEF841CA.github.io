@@ -1,7 +1,7 @@
 ---
 title: Firewalld 配置
 date: 2021-05-19 10:56:13
-tags: [ Linux, Firewall ]
+tags: [ Linux, Firewall, Command ]
 category: Deploy
 ---
 

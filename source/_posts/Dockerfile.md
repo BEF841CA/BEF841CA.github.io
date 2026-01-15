@@ -1,7 +1,7 @@
 ---
 title: Dockerfile
 date: 2021-05-11 10:09:53
-tags: [ Docker ]
+tags: [ Docker, Container ]
 category: Docker
 ---
 
