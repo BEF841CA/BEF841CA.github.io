@@ -1,6 +1,6 @@
 ---
-title: Container Runtime Interface (CRI) CLI Command
-date: 2026-01-15 15:07:53
+title: Containerd Command
+date: 2026-01-15 15:45:53
 tags: [ Containerd, Container, Command]
 category: Containerd
 ---
